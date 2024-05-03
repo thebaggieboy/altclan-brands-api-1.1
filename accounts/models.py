@@ -101,23 +101,26 @@ class BrandUserManager(BaseUserManager):
 
 class CustomUser(AbstractBaseUser):
     
+    username = models.CharField(blank=True, null=True, max_length=25, unique=True)
     email = models.EmailField(
         verbose_name='email address',
         max_length=255,
         unique=True,
     )
-    user_type = models.CharField(max_length=250, default='user',choices=USER_TYPE)
-    first_name = models.CharField(max_length=250, default='')
-    last_name = models.CharField(max_length=250, default='')
+    brand_name = models.CharField(max_length=250, default='')
+    brand_logo = models.ImageField(upload_to='Brand Logos', default='')
+    brand_bio = models.TextField(default='')
+    brand_type = models.CharField(choices=COMMUNITY_TYPE, default='', max_length=250)
     mobile_number = models.CharField(max_length=250, default='')
-    display_picture = models.ImageField(upload_to='Display Picture', default='')  
-    address = models.CharField(max_length=250, default='')
+    slug = models.SlugField(null=True, blank=True, default='')
+    billing_address = models.CharField(max_length=250, default='')
     city = models.CharField(max_length=250, default='')
     state = models.CharField(max_length=250, default='')
     zip = models.CharField(max_length=250, default='')
     is_active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False) # a admin user; non super-user
     admin = models.BooleanField(default=False) # a superuser
+
 
     # notice the absence of a "Password field", that is built in.
 
