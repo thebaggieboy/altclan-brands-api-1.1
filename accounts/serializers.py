@@ -1,7 +1,15 @@
 from rest_framework import serializers
 from django.conf import settings
 from .models import Profile, CustomUser, BrandUser
+from djoser.serializers import UserCreateSerializer as BaseUserCreateSerializer
 
+
+# Custom Serializer for Djoser Library 
+class UserCreateSerializer(BaseUserCreateSerializer):
+    class Meta(BaseUserCreateSerializer.Meta):
+        fields = ['id', 'email', 'brand_name', 'brand_logo',  'brand_bio', 'brand_type', 'mobile_number' 'password' ]
+        
+        
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = CustomUser

@@ -14,7 +14,7 @@ BrandUser = settings.BRAND_USER_MODEL
 import uuid
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, password=None):
+    def create_user(self, email,brand_name, brand_logo,brand_bio,brand_type,mobile_number, billing_address, city, state, zip, password=None):
         """
         Creates and saves a User with the given email and password.
         """
@@ -23,6 +23,16 @@ class UserManager(BaseUserManager):
 
         user = self.model(
             email=self.normalize_email(email),
+            brand_name=brand_name,
+            brand_logo=brand_logo,
+            brand_bio=brand_bio,
+            brand_type=brand_type,
+            mobile_number=mobile_number,
+            billing_address=billing_address,
+            city=city,
+            state=state,
+            zip=zip,
+            password=password
         )
 
         user.set_password(password)
@@ -41,13 +51,22 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, password):
+    def create_superuser(self, email,brand_name, brand_logo,brand_bio,brand_type,mobile_number, billing_address, city, state, zip, password):
         """
         Creates and saves a superuser with the given email and password.
         """
         user = self.create_user(
             email,
-            password=password,
+            brand_name=brand_name,
+            brand_logo=brand_logo,
+            brand_bio=brand_bio,
+            brand_type=brand_type,
+            mobile_number=mobile_number,
+            billing_address=billing_address,
+            city=city,
+            state=state,
+            zip=zip,
+            password=password
         )
         user.staff = True
         user.admin = True
