@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    #'djoser',
     'rest_framework',
     'rest_framework.authtoken',
     'dj_rest_auth',
@@ -92,10 +93,10 @@ WSGI_APPLICATION = 'altclan.wsgi.application'
 DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-       'NAME':os.getenv('DATABASE_NAME'),
-       'USER':os.getenv('USER'),
-       'PASSWORD':os.getenv('PASSWORD'),
-       'HOST':os.getenv('HOST'),
+       'NAME': 'altclan_8jq3',
+       'USER':'altclan_8jq3_user',
+       'PASSWORD':'YoWqi7nKewZbVmNJl47BI3pLWk72qwiy',
+       'HOST':'dpg-coqbqncf7o1s73ef3f60-a.oregon-postgres.render.com',
        'PORT': '5432',
    }
 }
@@ -193,6 +194,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 SIMPLE_JWT = {
+     'AUTH_HEADER_TYPES':('JWT',),
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': False,
