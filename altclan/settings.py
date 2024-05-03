@@ -17,7 +17,7 @@ SECRET_KEY = "django-insecure-#ioqb6nvy+hwu5(%r@(dv!6zztc7vb*+altclbrandsapivhih
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['altclan-api-v1.onrender.com', 'altclan-brands-api-1.1.onrender.com', 'localhost', '127.0.0.1', 'altclan.store', 'altclanstore.vercel.app']
+ALLOWED_HOSTS = ['altclan-api-v1.onrender.com', 'altclan-brands-api-1-1.onrender.com', 'localhost', '127.0.0.1', 'altclan.store', 'altclanstore.vercel.app']
 
 
 # Application definition
@@ -229,7 +229,8 @@ CORS_ALLOWED_ORIGINS = [
     'http://altclan.store',
     'https://altclan.store',
     'https://altclan-api-v1.onrender.com',
-    'https://altclan-brands-api-1-1.onrender.com'
+    'https://altclan-brands-api-1-1.onrender.com',
+    
 ]
 
 CORS_ORIGIN_WHITELIST = [
