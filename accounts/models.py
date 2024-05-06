@@ -126,11 +126,11 @@ class CustomUser(AbstractBaseUser):
         max_length=255,
         unique=True,
     )
-    brand_name = models.CharField(max_length=250, default='')
-    brand_logo = models.ImageField(upload_to='Brand Logos', default='')
-    brand_bio = models.TextField(default='')
-    brand_type = models.CharField(choices=COMMUNITY_TYPE, default='', max_length=250)
-    mobile_number = models.CharField(max_length=250, default='')
+    brand_name = models.CharField(max_length=250, default='', null=True, blank=True)
+    brand_logo = models.ImageField(upload_to='Brand Logos', default='', null=True, blank=True)
+    brand_bio = models.TextField(default='', null=True, blank=True)
+    brand_type = models.CharField(choices=COMMUNITY_TYPE, default='', max_length=250, null=True, blank=True)
+    mobile_number = models.CharField(max_length=250, default='', null=True, blank=True)
     slug = models.SlugField(null=True, blank=True, default='')
     billing_address = models.CharField(max_length=250, default='')
     city = models.CharField(max_length=250, default='')
