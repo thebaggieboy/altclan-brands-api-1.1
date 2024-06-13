@@ -8,6 +8,8 @@ from django.utils import timezone
 from brands.display import LABEL_DISPLAY, COLLECTION_DISPLAY, COMMUNITY_TYPE_DISPLAY
 from brands.choices import STATUS, GENDER, COMMUNITY_TYPE, CLOTHING_CATEGORY
 from .choices import *
+from django.contrib.postgres.fields import ArrayField
+
 User = settings.AUTH_USER_MODEL
 BrandUser = settings.BRAND_USER_MODEL
 
@@ -131,6 +133,7 @@ class CustomUser(AbstractBaseUser):
     brand_bio = models.TextField(default='', null=True, blank=True)
     brand_type = models.CharField(choices=COMMUNITY_TYPE, default='', max_length=250, null=True, blank=True)
     mobile_number = models.CharField(max_length=250, default='', null=True, blank=True)
+    followers = ArrayField(models.CharField(max_length=250, null=True, blank=True), default=list)
     slug = models.SlugField(null=True, blank=True, default='')
     billing_address = models.CharField(max_length=250, default='', null=True, blank=True)
     city = models.CharField(max_length=250, default='', null=True, blank=True)
