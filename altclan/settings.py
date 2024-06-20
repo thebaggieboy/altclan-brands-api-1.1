@@ -94,10 +94,10 @@ WSGI_APPLICATION = 'altclan.wsgi.application'
 DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-       'NAME': 'altclan_8jq3',
-       'USER':'altclan_8jq3_user',
-       'PASSWORD':'YoWqi7nKewZbVmNJl47BI3pLWk72qwiy',
-       'HOST':'dpg-coqbqncf7o1s73ef3f60-a.oregon-postgres.render.com',
+       'NAME': 'altclan_x6mt',
+       'USER':'altclan_x6mt_user',
+       'PASSWORD':'apGlTzaVXj7Yirr0hOzIdbLiEqiQDRF7',
+       'HOST':'dpg-cpq0pm08fa8c739nqje0-a.oregon-postgres.render.com',
        'PORT': '5432',
    }
 }
