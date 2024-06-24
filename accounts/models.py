@@ -16,7 +16,7 @@ BrandUser = settings.BRAND_USER_MODEL
 import uuid
 
 class UserManager(BaseUserManager):
-    def create_user(self, email,brand_name, brand_logo,brand_bio,brand_type,mobile_number, billing_address, city, state, zip, password=None):
+    def create_user(self, email, password=None):
         """
         Creates and saves a User with the given email and password.
         """
@@ -25,16 +25,6 @@ class UserManager(BaseUserManager):
 
         user = self.model(
             email=self.normalize_email(email),
-            brand_name=brand_name,
-            brand_logo=brand_logo,
-            brand_bio=brand_bio,
-            brand_type=brand_type,
-            mobile_number=mobile_number,
-            billing_address=billing_address,
-            city=city,
-            state=state,
-            zip=zip,
-            password=password
         )
 
         user.set_password(password)
@@ -53,28 +43,18 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email,brand_name, brand_logo,brand_bio,brand_type,mobile_number, billing_address, city, state, zip, password):
+    def create_superuser(self, email, password):
         """
         Creates and saves a superuser with the given email and password.
         """
         user = self.create_user(
             email,
-            brand_name=brand_name,
-            brand_logo=brand_logo,
-            brand_bio=brand_bio,
-            brand_type=brand_type,
-            mobile_number=mobile_number,
-            billing_address=billing_address,
-            city=city,
-            state=state,
-            zip=zip,
-            password=password
+            password=password,
         )
         user.staff = True
         user.admin = True
         user.save(using=self._db)
         return user
-
 
 
 class BrandUserManager(BaseUserManager):
@@ -127,13 +107,15 @@ class CustomUser(AbstractBaseUser):
         verbose_name='email address',
         max_length=255,
         unique=True,
-    )
+    )   
     brand_name = models.CharField(max_length=250, default='', null=True, blank=True)
     brand_logo = models.ImageField(upload_to='Brand Logos', default='', null=True, blank=True)
     brand_bio = models.TextField(default='', null=True, blank=True)
     brand_type = models.CharField(choices=COMMUNITY_TYPE, default='', max_length=250, null=True, blank=True)
     mobile_number = models.CharField(max_length=250, default='', null=True, blank=True)
-    followers = ArrayField(models.CharField(max_length=250, null=True, blank=True), default=list)
+    followers = ArrayField(models.CharField(max_length=250, null=True, blank=True), default=list)  
+    wish_list = ArrayField(models.CharField(max_length=250, null=True, blank=True), default=list)  
+   
     slug = models.SlugField(null=True, blank=True, default='')
     billing_address = models.CharField(max_length=250, default='', null=True, blank=True)
     city = models.CharField(max_length=250, default='', null=True, blank=True)
