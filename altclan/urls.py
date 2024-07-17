@@ -7,12 +7,19 @@ from rest_framework import routers
 from core.views import *
 from accounts.views import *
 from brands.views import *
+from blog.views import BlogViewSet as BlogsViewSet   
+from communities.views import *
+from reviews.views import *
+
+
+
+
 
 from rest_framework_simplejwt import views as jwt_views
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
-#router.register(r'brand_users', BrandUserViewSet)
+router.register(r'communities', CommunityViewSet)
 router.register(r'merchandises', MerchandiseViewSet)
 router.register(r'user_profile', ProfileViewSet)
 router.register(r'orders', OrderViewSet)
@@ -20,7 +27,7 @@ router.register(r'payments', PaymentViewSet)
 router.register(r'coupons', CouponViewSet)
 router.register(r'refund', RefundViewSet)
 router.register(r'reviews', ReviewViewSet)
-router.register(r'blog', BlogViewSet)
+router.register(r'blog', BlogsViewSet)
 
 
 urlpatterns = [
