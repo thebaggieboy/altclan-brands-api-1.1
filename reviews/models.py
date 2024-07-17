@@ -21,7 +21,7 @@ class Reviews(models.Model):
         return reverse('review:remove-from-review', kwargs={'slug':self.slug})
 
     def __str__(self):
-        return f'{self.product}'
+        return f'{self.user}'
 
     def save(self, *args, **kwargs):
         if not self.slug:
