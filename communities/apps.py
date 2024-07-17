@@ -1,9 +1,14 @@
 from django.apps import AppConfig
 
 
-class ReviewsConfig(AppConfig):
+class CommunitiesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'reviews'
+    name = 'communities'
+   
 
     def ready(self):
-        import reviews.signals
+        import communities.signals
+
+
+
+

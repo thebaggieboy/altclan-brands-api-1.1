@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from django.conf import settings
 from .models import Profile, CustomUser, BrandUser
+from brands.models import Blog
 from djoser.serializers import UserCreateSerializer as BaseUserCreateSerializer
 
 
@@ -8,7 +9,12 @@ from djoser.serializers import UserCreateSerializer as BaseUserCreateSerializer
 class UserCreateSerializer(BaseUserCreateSerializer):
     class Meta(BaseUserCreateSerializer.Meta):
         fields = ['id', 'email', 'password' ]
-        
+       
+class BlogSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Blog
+        fields = ['id', 'brand_name', 'title',  'subject', 'slug']
+ 
         
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

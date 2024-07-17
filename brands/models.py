@@ -41,7 +41,7 @@ class Merchandise(models.Model):
     merchandise_type = models.CharField(default='', null=True, blank=True, max_length=250)
     merchandise_description = models.TextField(default='')
     merchandise_details = models.TextField(default='')
-    merchandise_gender = models.CharField( default='', null=True, blank=True, max_length=250)
+    merchandise_gender = models.CharField(default='', null=True, blank=True, max_length=250)
     #display_image = models.ImageField(upload_to='Display Picture', default='') 
     display_image = models.URLField()
     image_1 = models.ImageField(upload_to='Merch Image', default='', null=True, blank=True)
@@ -66,6 +66,20 @@ class Merchandise(models.Model):
         return super().save(*args, **kwargs)
 
 
+class Blog(models.Model):
+    id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)
+    brand_name = models.CharField(max_length=250, null=True, blank=True)
+    title = models.CharField(max_length=250, null=True, blank=True)
+    subject = models.TextField()
+    slug = models.SlugField(null=True, blank=True, default='')
+    def __str__(self):
+        return f'Brands Blogs'
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(f'{self.brand_name}')
+        return super().save(*args, **kwargs)
+# ProductOrder, these are the items that have been
 
 class Leads(models.Model):
     id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)

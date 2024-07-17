@@ -20,7 +20,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
 
 class ReviewViewSet(viewsets.ModelViewSet):
     queryset = Reviews.objects.all()
-    serializer_class = ReviewSerializer
+    serializer_class = ReviewsSerializer
 
 
 class MerchandiseViewSet(viewsets.ModelViewSet):
