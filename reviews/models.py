@@ -26,5 +26,5 @@ class Reviews(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(f'{self.user}/{self.brand_name}/review/')
+            self.slug = slugify(f'{self.email}/{self.brand_name}/review/')
         return super().save(*args, **kwargs)

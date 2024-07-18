@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'crispy_forms',
     'rest_framework_simplejwt',
+    'mail_templated'
   
 ]
 
