@@ -6,7 +6,7 @@ User = settings.AUTH_USER_MODEL
 
 # Create your models here.
 class Reviews(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='reiews', null=True, blank=True)
+    email = models.CharField(max_length=250, blank=True, null=True)
     brand_name = models.CharField(max_length=250, blank=True, null=True)
     slug = models.SlugField()
     review = models.TextField(default='', blank=True, null=True)
