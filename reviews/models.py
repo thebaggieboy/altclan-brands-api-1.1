@@ -7,6 +7,7 @@ User = settings.AUTH_USER_MODEL
 # Create your models here.
 class Reviews(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='reiews', null=True, blank=True)
+    brand_name = models.CharField(max_length=250, blank=True, null=True)
     slug = models.SlugField()
     review = models.TextField(default='', blank=True, null=True)
 
@@ -25,5 +26,5 @@ class Reviews(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(f'{self.user}-review')
+            self.slug = slugify(f'{self.user}/{self.brand_name}/review/')
         return super().save(*args, **kwargs)
