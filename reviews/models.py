@@ -8,23 +8,10 @@ User = settings.AUTH_USER_MODEL
 class Reviews(models.Model):
     email = models.CharField(max_length=250, blank=True, null=True)
     brand_name = models.CharField(max_length=250, blank=True, null=True)
-    slug = models.SlugField()
     review = models.TextField(default='', blank=True, null=True)
 
     
-    def get_absolute_url(self):
-        return reverse('core:detail', kwargs={'slug':self.slug})
-
-    def get_add_to_review_url(self):
-        return reverse('review:add-to-review', kwargs={'slug':self.slug})
-
-    def get_remove_from_review(self):
-        return reverse('review:remove-from-review', kwargs={'slug':self.slug})
-
     def __str__(self):
         return f'{self.user}'
 
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(f'{self.email}/{self.brand_name}/review/')
-        return super().save(*args, **kwargs)
+ 
