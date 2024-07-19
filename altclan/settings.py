@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.staticfiles',
     'core.apps.CoreConfig',
+    'auctions.apps.AuctionsConfig',
     'brands.apps.BrandsConfig',
     'blog.apps.BlogConfig',
     'communities.apps.CommunitiesConfig',
