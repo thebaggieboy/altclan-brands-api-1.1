@@ -14,6 +14,9 @@ class Blog(models.Model):
     title = models.CharField(max_length=250, null=True, blank=True)
     subject = models.TextField()
     slug = models.SlugField(null=True, blank=True, default='')
+    date_created = models.DateTimeField(auto_now_add=True)
+    
+    
     def __str__(self):
         return f'Brands Blogs'
 
