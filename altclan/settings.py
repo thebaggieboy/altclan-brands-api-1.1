@@ -246,7 +246,7 @@ CORS_ORIGIN_WHITELIST = [
     'http://127.0.0.1:3000',
     'http://localhost:8000',
     'http://127.0.0.1:8000',
-    'http://altclan.com',
+    'http://altclan.store',
     'https://altclan.com',
     'http://altclan.com',
     'https://www.altclan.com',
