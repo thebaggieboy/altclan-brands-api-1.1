@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'crispy_forms',
     'rest_framework_simplejwt',
-    'mail_templated'
+  
   
 ]
 
@@ -247,6 +247,7 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:8000',
     'http://127.0.0.1:8000',
     'http://altclan.store',
+    'https://altclan.store',
     'https://altclan.com',
     'http://altclan.com',
     'https://www.altclan.com',
