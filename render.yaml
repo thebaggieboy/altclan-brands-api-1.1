@@ -1,0 +1,14 @@
+services:
+  - name: altclan-api
+    type: web
+    env: docker
+    plan: free
+    dockerfilePath: Dockerfile
+    healthCheckPath: /
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: altclan.settings
+      - key: SECRET_KEY
+        value: django-insecure-#ioqb6nvy+hwu5(%r@(dv!6zztc7vb*+altclbrandsapivhihr5*oe
+      - key: ALLOWED_HOSTS
+        value: altclan-api.onrender.com
