@@ -17,7 +17,7 @@ SECRET_KEY = "django-insecure-#ioqb6nvy+hwu5(%r@(dv!6zztc7vb*+altclbrandsapivhih
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['altclan-api-v1.onrender.com', 'altclan-brands-api-1-1.onrender.com', 'localhost', '127.0.0.1', 'altclan.store', 'altclanstore.vercel.app']
+ALLOWED_HOSTS = ['altclan-api-v1.onrender.com', 'altclan-brands-api-1.1-1.onrender.com', 'localhost', '127.0.0.1', 'altclan.store', 'altclanstore.vercel.app']
 
 
 # Application definition

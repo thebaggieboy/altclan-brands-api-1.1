@@ -1,5 +1,5 @@
 services:
-  - name: altclan-api
+  - name: altclan-brands-api-1.1-1
     type: web
     env: docker
     plan: free
@@ -11,4 +11,4 @@ services:
       - key: SECRET_KEY
         value: django-insecure-#ioqb6nvy+hwu5(%r@(dv!6zztc7vb*+altclbrandsapivhihr5*oe
       - key: ALLOWED_HOSTS
-        value: altclan-api.onrender.com
+        value: altclan-brands-api-1.1-1.onrender.com
