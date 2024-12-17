@@ -181,7 +181,7 @@ SESSION_COOKIE_SAMESITE = 'None'
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SAMESITE = 'None'
 CSRF_COOKIE_SECURE = True
-CSRF_TRUSTED_ORIGINS = ['https://*.altclan.com',   'https://api.cloudinary.com',  'https://altclan.com', 'altclan.com', 'https://altclan-api-v1.onrender.com', 'https://altclan-brands-api-1-1.onrender.com',  'http://localhost:8000','http://127.0.0.1:8000', 'http://localhost:3000','http://127.0.0.1:3000',]
+CSRF_TRUSTED_ORIGINS = ['https://*.altclan.com',   'https://api.cloudinary.com',  'https://altclan.com', 'altclan.com', 'https://altclan-api-v1.onrender.com', 'https://altclan-brands-api-1-1-1.onrender.com',  'http://localhost:8000','http://127.0.0.1:8000', 'http://localhost:3000','http://127.0.0.1:3000',]
 
 REST_AUTH = {
     
@@ -236,7 +236,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://altclan.com',
     'https://altclan.com',
     'https://altclan-api-v1.onrender.com',
-    'https://altclan-brands-api-1-1.onrender.com',
+    'https://altclan-brands-api-1-1-1.onrender.com',
     'https://api.cloudinary.com'
     
 ]
@@ -246,14 +246,11 @@ CORS_ORIGIN_WHITELIST = [
     'http://127.0.0.1:3000',
     'http://localhost:8000',
     'http://127.0.0.1:8000',
-    'http://altclan.store',
-    'https://altclan.store',
-    'https://altclan.com',
     'http://altclan.com',
-    'https://www.altclan.com',
+    'https://altclan.com',
     'https://altclan-api-v1.onrender.com',
+    'https://altclan-brands-api-1-1-1.onrender.com',
     'https://api.cloudinary.com'
-    
     
     
 ]
