@@ -1,16 +1,26 @@
-version: "3.8"
-
+version: '3.8'
 services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: altclan_90zq
+      POSTGRES_USER: altclan_90zq_user
+      POSTGRES_PASSWORD: yHvbGCl0APFJzTfatTw3wBtmGPNOaYeV
+    ports:
+      - "5432:5432"
+
   web:
     build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
     ports:
       - "8000:8000"
-    volumes:
-      - .:/app
-    command: python manage.py runserver 0.0.0.0:8000
     environment:
-      - DATABASE_HOST=dpg-ct5qi63qf0us7388dh7g-a.oregon-postgres.render.com
-      - DATABASE_PORT=5432
-      - DATABASE_NAME=altclan_90zq
-      - DATABASE_USER=altclan_90zq_user
-      - DATABASE_PASSWORD=yHvbGCl0APFJzTfatTw3wBtmGPNOaYeV
+      - POSTGRES_DB=altclan_90zq
+      - POSTGRES_USER=altclan_90zq_user
+      - POSTGRES_PASSWORD=yHvbGCl0APFJzTfatTw3wBtmGPNOaYeV
+      - POSTGRES_HOST=dpg-ct5qi63qf0us7388dh7g-a.oregon-postgres.render.com
+      - POSTGRES_PORT=5432
+    depends_on:
+      - db
