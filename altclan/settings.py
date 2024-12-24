@@ -17,7 +17,7 @@ SECRET_KEY = "django-insecure-#ioqb6nvy+hwu5(%r@(dv!6zztc7vb*+altclbrandsapivhih
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['altclan-api-v1.onrender.com', 'altclan-brands-api-1-1.onrender.com', 'localhost', '127.0.0.1', 'altclan.store', 'altclanstore.vercel.app']
+ALLOWED_HOSTS = ['altclan-api.onrender.com', 'altclan-brands-api-1-1.onrender.com', 'localhost', '127.0.0.1', 'altclan.store', 'altclanstore.vercel.app']
 
 
 # Application definition
@@ -98,11 +98,11 @@ WSGI_APPLICATION = 'altclan.wsgi.application'
 DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.postgresql',
-       'NAME':os.getenv('DATABASE_NAME'),
-       'USER':os.getenv('USER'),
-       'PASSWORD':os.getenv('PASSWORD'),
-       'HOST':os.getenv('HOST'),
-       'PORT': '5432',
+       'NAME':os.getenv('DATABASE_NAME', 'altclan_90zq'),
+       'USER':os.getenv('USER', 'altclan_90zq_user'),
+       'PASSWORD':os.getenv('PASSWORD', 'yHvbGCl0APFJzTfatTw3wBtmGPNOaYeV'),
+       'HOST':os.getenv('HOST', 'dpg-ct5qi63qf0us7388dh7g-a.oregon-postgres.render.com'),
+       'PORT': os.getenv('PORT', '5432'),
    }
 }
 
@@ -231,11 +231,10 @@ CORS_ALLOW_HEADERS = [
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
-    'http://localhost:8000',
-    'http://127.0.0.1:8000',
     'http://altclan.com',
     'https://altclan.com',
-    'https://altclan-api-v1.onrender.com',
+    'http://www.altclan.com',
+    'https://www.altclan.com',
     'https://altclan-brands-api-1-1.onrender.com',
     'https://api.cloudinary.com'
     
@@ -244,11 +243,10 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
-    'http://localhost:8000',
-    'http://127.0.0.1:8000',
     'http://altclan.com',
     'https://altclan.com',
-    'https://altclan-api-v1.onrender.com',
+    'http://www.altclan.com',
+    'https://www.altclan.com',
     'https://altclan-brands-api-1-1.onrender.com',
     'https://api.cloudinary.com'
     
