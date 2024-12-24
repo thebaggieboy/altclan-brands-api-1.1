@@ -98,11 +98,11 @@ WSGI_APPLICATION = 'altclan.wsgi.application'
 DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.postgresql',
-       'NAME':os.getenv('DATABASE_NAME', 'altclan_90zq'),
-       'USER':os.getenv('USER', 'altclan_90zq_user'),
-       'PASSWORD':os.getenv('PASSWORD', 'yHvbGCl0APFJzTfatTw3wBtmGPNOaYeV'),
-       'HOST':os.getenv('HOST', 'dpg-ct5qi63qf0us7388dh7g-a.oregon-postgres.render.com'),
-       'PORT': os.getenv('PORT', '5432'),
+       'NAME':os.getenv('DATABASE_NAME'),
+       'USER':os.getenv('USER'),
+       'PASSWORD':os.getenv('PASSWORD'),
+       'HOST':os.getenv('HOST'),
+       'PORT': '5432',
    }
 }
 
@@ -255,7 +255,7 @@ CORS_ORIGIN_WHITELIST = [
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_REPLACE_HTTPS_REFERER = True
-CORS_ALLOW_ALL_ORIGINS = True
+
 ACCOUNT_USER_MODEL_USERNAME_FIELD = 'email'
 AUTH_USER_MODEL = 'accounts.CustomUser'
 BRAND_USER_MODEL='accounts.BrandUser'
