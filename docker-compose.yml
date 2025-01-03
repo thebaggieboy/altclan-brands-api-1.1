@@ -1,33 +1,11 @@
 version: '3.8'
 services:
-  db:
-    image: postgres:latest
-    restart: always
-    environment:
-      POSTGRES_DB: altclan_ij7z
-      POSTGRES_USER: altclan_ij7z_user
-      POSTGRES_PASSWORD: JRi5TkXQF7gQcJePaO2Zv577QXUrPp35
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn altclan.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/code
     ports:
       - "8000:8000"
     environment:
-      - DEBUG=True
-      - POSTGRES_DB=altclan_ij7z
-      - POSTGRES_USER=altclan_ij7z_user
-      - POSTGRES_PASSWORD=JRi5TkXQF7gQcJePaO2Zv577QXUrPp35
-      - POSTGRES_HOST=dpg-cts0d6t2ng1s73bta120-a.oregon-postgres.render.com
-      - POSTGRES_PORT=5432
-    depends_on:
-      - db
-
-volumes:
-  postgres_data:
+      - DATABASE_URL=postgresql://altclan_ij7z_user:JRi5TkXQF7gQcJePaO2Zv577QXUrPp35@dpg-cts0d6t2ng1s73bta120-a.oregon-postgres.render.com/altclan_ij7z

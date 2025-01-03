@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 load_dotenv()
 
+import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -96,16 +97,10 @@ WSGI_APPLICATION = 'altclan.wsgi.application'
 # docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.postgresql',
-       'NAME':os.getenv('DATABASE_NAME'),
-       'USER':os.getenv('USER'),
-       'PASSWORD':os.getenv('PASSWORD'),
-       'HOST':os.getenv('HOST'),
-       'PORT': '5432',
-   }
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL')
+    )
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -181,7 +176,7 @@ SESSION_COOKIE_SAMESITE = 'None'
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SAMESITE = 'None'
 CSRF_COOKIE_SECURE = True
-CSRF_TRUSTED_ORIGINS = ['https://*.altclan.com',   'https://api.cloudinary.com',  'https://altclan.com', 'altclan.com', 'https://altclan-api-v1.onrender.com', 'https://altclan-brands-api-1-1.onrender.com', 'altclan-brands-api-1-1.onrender.com',  'http://localhost:8000','http://127.0.0.1:8000', 'http://localhost:3000','http://127.0.0.1:3000',]
+CSRF_TRUSTED_ORIGINS = ['https://*.altclan.com',   'https://api.cloudinary.com',  'https://altclan.com',  'https://altclan-api-v1.onrender.com', 'https://altclan-brands-api-1-1.onrender.com', 'http://localhost:8000','http://127.0.0.1:8000', 'http://localhost:3000','http://127.0.0.1:3000',]
 
 REST_AUTH = {
     
