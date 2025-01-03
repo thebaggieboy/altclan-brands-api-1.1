@@ -97,10 +97,16 @@ WSGI_APPLICATION = 'altclan.wsgi.application'
 # docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL')
-    )
+   'default': {
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME':os.getenv('DATABASE_NAME'),
+       'USER':os.getenv('USER'),
+       'PASSWORD':os.getenv('PASSWORD'),
+       'HOST':os.getenv('HOST'),
+       'PORT': '5432',
+   }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
