@@ -97,14 +97,7 @@ WSGI_APPLICATION = 'altclan.wsgi.application'
 # docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.postgresql',
-       'NAME':os.getenv('DATABASE_NAME'),
-       'USER':os.getenv('USER'),
-       'PASSWORD':os.getenv('PASSWORD'),
-       'HOST':os.getenv('HOST'),
-       'PORT': '5432',
-   }
+    'default': dj_database_url.config(default='postgres://postgresql://altclan_ij7z_user:JRi5TkXQF7gQcJePaO2Zv577QXUrPp35@dpg-cts0d6t2ng1s73bta120-a.oregon-postgres.render.com/altclan_ij7z')
 }
 
 
