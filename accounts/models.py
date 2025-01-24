@@ -106,7 +106,7 @@ class CustomUser(AbstractBaseUser):
     email = models.EmailField(
         verbose_name='email address',
         max_length=255,
-        unique=True,
+        unique=True, 
     )   
     brand_name = models.CharField(max_length=250, default='', null=True, blank=True)
     brand_logo = models.URLField(default='', null=True, blank=True)

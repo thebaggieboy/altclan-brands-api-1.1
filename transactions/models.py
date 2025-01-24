@@ -7,14 +7,44 @@ import uuid
 from django.utils.crypto import get_random_string
 from brands.models import BillingAddress
 from django.utils.text import slugify
+from django.contrib.postgres.fields import ArrayField
 
 STATUS = (
     ('P', 'Pending'),
     ('C', 'Completed'),
 )
 
+DEPOSIT_TYPE = (
+    ('Transfer', 'Transfer'),
+    ('Card', 'Card'),
+    ('USSD', 'USSD'),
+)
+
 User = settings.AUTH_USER_MODEL
 RANDOM_ORDER_ID = get_random_string(length=12)
+
+
+class Accounts(models.Model):
+    bank_name = models.CharField(max_length=15,  default='', null=True)
+    bank_code = models.CharField(max_length=15, default='', null=True)
+    account_name = models.CharField(max_length=15, default='', null=True)
+    account_number = models.CharField(max_length=15, default='', null=True)
+
+    def __str__(self):
+        return self.bank_code
+
+class Deposit(models.Model):
+    
+    amount = models.FloatField()
+
+    def __str__(self):
+        return self.deposit_type
+
+class Withdraw(models.Model):
+    amount = models.FloatField()
+
+    def __str__(self):
+        return self.amount
 
 
 # Create your models here.
@@ -32,7 +62,8 @@ class Order(models.Model):
     ordered = models.BooleanField(default=False)
     delivered = models.BooleanField(default=False)
     order_date = models.DateTimeField(default=timezone.now())
-    
+    item = ArrayField(models.CharField(max_length=250, null=True, blank=True), default=list)  
+     
 
     def __str__(self):
         return f'{self.tracking_number}'
