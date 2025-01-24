@@ -8,4 +8,4 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=postgresql://postgresql://altclan_49s6_user:P089LrBXiuWfzJCFuPNVf5FaU0IMDdnT@dpg-cu50ar1u0jms73fcnne0-a.oregon-postgres.render.com/altclan_49s6
+      - DATABASE_URL=postgresql://altclan_pfyf_user:OXLpCtVrEm79GZakE35Ip0s9TNCytJPI@dpg-cu9lphdds78s739ffat0-a.oregon-postgres.render.com/altclan_pfyf
