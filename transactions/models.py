@@ -63,7 +63,7 @@ class Order(models.Model):
     delivered = models.BooleanField(default=False)
     order_date = models.DateTimeField(default=timezone.now())
     item = ArrayField(models.CharField(max_length=250, null=True, blank=True), default=list)  
-     
+    delivery_type = models.CharField(max_length=250, blank=True)
 
     def __str__(self):
         return f'{self.tracking_number}'
