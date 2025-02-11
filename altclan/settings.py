@@ -253,7 +253,7 @@ CORS_REPLACE_HTTPS_REFERER = True
 ACCOUNT_USER_MODEL_USERNAME_FIELD = 'email'
 AUTH_USER_MODEL = 'accounts.CustomUser'
 BRAND_USER_MODEL='accounts.BrandUser'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION ='optional'
@@ -291,3 +291,9 @@ DJOSER = {
     'token_create': 'djoser.serializers.TokenCreateSerializer',
 }
 }
+
+EMAIL_HOST=os.getenv("EMAIL_HOST")
+EMAIL_PORT = 587
+EMAIL_HOST_USER=os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD=os.getenv("EMAIL_HOST_PASSWORD")
+EMAIL_USE_TLS = True
