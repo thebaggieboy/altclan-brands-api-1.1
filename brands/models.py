@@ -45,7 +45,7 @@ class Merchandise(models.Model):
     merchandise_gender = models.CharField(default='', null=True, blank=True, max_length=250)
     #display_image = models.ImageField(upload_to='Display Picture', default='') 
     display_image = models.URLField()
-    reviews = ArrayField(models.JSONField(), default=list)
+   # reviews = ArrayField(models.JSONField(), default=list)
     image_1 = models.ImageField(upload_to='Merch Image', default='', null=True, blank=True)
     image_2 = models.ImageField(upload_to='Merch Image', default='', null=True, blank=True)
     image_3 = models.ImageField(upload_to='Merch Image', default='', null=True, blank=True)
@@ -55,7 +55,7 @@ class Merchandise(models.Model):
     price = models.IntegerField(null=True)
     delivery_cost = models.FloatField(null=True, default=0.00)
     discount = models.FloatField(null=True, default=0.00)
-    
+     
     slug = models.SlugField()
     date_created = models.DateTimeField(default=timezone.now())
 
