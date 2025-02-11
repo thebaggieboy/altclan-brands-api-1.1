@@ -45,6 +45,7 @@ class Merchandise(models.Model):
     merchandise_gender = models.CharField(default='', null=True, blank=True, max_length=250)
     #display_image = models.ImageField(upload_to='Display Picture', default='') 
     display_image = models.URLField()
+    reviews = ArrayField(models.JSONField(), default=list)
     image_1 = models.ImageField(upload_to='Merch Image', default='', null=True, blank=True)
     image_2 = models.ImageField(upload_to='Merch Image', default='', null=True, blank=True)
     image_3 = models.ImageField(upload_to='Merch Image', default='', null=True, blank=True)
