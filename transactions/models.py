@@ -71,7 +71,6 @@ class Order(models.Model):
 
 class Payment(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True,related_name='user_order')
-    order = models.OneToOneField('Order', models.CASCADE, null=True, blank=True, related_name='user_payment')
     paystack_charge_id = models.CharField(max_length=50, default='', null=True, blank=True)
     paystack_reference_number = models.CharField(max_length=250, blank=True, null=True)
     amount = models.FloatField()
@@ -81,8 +80,8 @@ class Payment(models.Model):
  
     def save(self, *args, **kwargs):
 
-        Order.objects.create()
-        print('[CREATED] - A new order has been created')
+        
+        print('[CREATED] - A new payment has been made')
         super(Payment, self).save(*args, **kwargs)
         
     def __str__(self): 
@@ -93,6 +92,14 @@ class Coupon(models.Model):
     code = models.CharField(max_length=15)
     amount = models.FloatField()
 
+    def __str__(self):
+        return self.code
+
+class Sales(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True,related_name='sales_order')
+    amount = models.FloatField()
+    revenue = models.FloatField()
+    status = models.CharField(max_length=250, default='Sold')
     def __str__(self):
         return self.code
 

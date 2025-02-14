@@ -45,7 +45,7 @@ class Merchandise(models.Model):
     merchandise_gender = models.CharField(default='', null=True, blank=True, max_length=250)
     #display_image = models.ImageField(upload_to='Display Picture', default='') 
     display_image = models.URLField()
-   # reviews = ArrayField(models.JSONField(), default=list)
+    reviews = ArrayField(models.JSONField(), default=list)
     image_1 = models.ImageField(upload_to='Merch Image', default='', null=True, blank=True)
     image_2 = models.ImageField(upload_to='Merch Image', default='', null=True, blank=True)
     image_3 = models.ImageField(upload_to='Merch Image', default='', null=True, blank=True)
@@ -136,7 +136,7 @@ class Cart(models.Model):
 
 class WishList(models.Model):
 
-    user_email = models.OneToOneField(User, on_delete=models.CASCADE, related_name='wishlist', null=True, blank=True)
+    user_email = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user_wishlist', null=True, blank=True)
    
     quantity = models.IntegerField(null=True, blank=True)
     merchandises = ArrayField(models.CharField(max_length=250),blank=True, null=True)
@@ -145,3 +145,13 @@ class WishList(models.Model):
         return f'{self.merchandises} x ( {self.quantity} ) pcs by {self.user_email} '
 
 # Represent a particular product order
+
+class Gallery(models.Model):
+
+    brand_name = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True, related_name='user_gallery')
+   
+    images = ArrayField(models.CharField(max_length=250),blank=True, null=True)
+    date_created = models.DateTimeField(default=timezone.now())
+
+    def __str__(self):
+        return f'{self.brand_name} x Gallery '

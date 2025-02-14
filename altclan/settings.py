@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'communities.apps.CommunitiesConfig',
     'accounts.apps.AccountConfig',
+    'dashboard.apps.DashboardConfig',
     'transactions.apps.TransactionsConfig',
     'reviews.apps.ReviewsConfig',
     'allauth',
