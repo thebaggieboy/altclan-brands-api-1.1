@@ -12,8 +12,7 @@ from communities.views import *
 from reviews.views import *
 from auctions.views import *
 
-
-
+from transactions.views import get_daily_orders
 
 
 from rest_framework_simplejwt import views as jwt_views
@@ -40,6 +39,7 @@ urlpatterns = [
     path('', include('rest_framework.urls', namespace='rest_framework')),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
+    path('api/daily-orders/', get_daily_orders, name='daily_orders')
    
   
   

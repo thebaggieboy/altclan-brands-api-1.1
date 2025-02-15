@@ -49,21 +49,9 @@ class Withdraw(models.Model):
 
 # Create your models here.
 class Order(models.Model): 
-
-    name_of_item = models.CharField(max_length=250, blank=True)
-    user_email = models.CharField(max_length=250, blank=True)
-    name_of_brand = models.CharField(max_length=250, blank=True)
-    amount_per_item = models.CharField(max_length=250, blank=True)
-    total_amount = models.IntegerField()
-    quantity = models.CharField(max_length=250, blank=True)
-    tracking_number = models.CharField(max_length=250, default=get_random_string(length=12))
-    number_of_items = models.IntegerField(null=True)
-    address = models.CharField(max_length=250, blank=True)
-    ordered = models.BooleanField(default=False)
-    delivered = models.BooleanField(default=False)
-    order_date = models.DateTimeField(default=timezone.now())
-    item = ArrayField(models.CharField(max_length=250, null=True, blank=True), default=list)  
-    delivery_type = models.CharField(max_length=250, blank=True)
+    user = models.CharField(max_length=15,  default='', null=True)
+    item = ArrayField(models.JSONField(), default=list)  
+    date_created = models.DateTimeField(default=timezone.now())
 
     def __str__(self):
         return f'{self.tracking_number}'

@@ -10,12 +10,11 @@ User = settings.AUTH_USER_MODEL
 class Reviews(models.Model):
     email = models.CharField(max_length=250, blank=True, null=True)
     merchandise_name = models.CharField(max_length=250, blank=True, null=True)
-    brand_name = models.CharField(max_length=250, blank=True, null=True)
     review = models.TextField(default='', blank=True, null=True)
 
     
     def __str__(self):
-        return f'{self.user}'
+        return f'{self.email}'
 
  
 class Ratings(models.Model):
