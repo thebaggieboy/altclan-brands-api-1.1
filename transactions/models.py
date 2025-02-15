@@ -49,7 +49,7 @@ class Withdraw(models.Model):
 
 # Create your models here.
 class Order(models.Model): 
-    user = models.CharField(max_length=15,  default='', null=True)
+    user = models.CharField(max_length=250,  default='', null=True)
     item = ArrayField(models.JSONField(), default=list)  
     date_created = models.DateTimeField(default=timezone.now())
 
