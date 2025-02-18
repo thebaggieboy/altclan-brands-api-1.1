@@ -11,6 +11,7 @@ from blog.views import BlogViewSet as BlogsViewSet
 from communities.views import *
 from reviews.views import *
 from auctions.views import *
+from dashboard.views import *
 
 from transactions.views import get_daily_orders
 
@@ -23,7 +24,7 @@ router.register(r'auctions', AuctionsViewSet)
 router.register(r'communities', CommunityViewSet)
 router.register(r'merchandises', MerchandiseViewSet)
 router.register(r'gallery', GalleryViewSet)
-#router.register(r'user_profile', ProfileViewSet)
+router.register(r'customers', CustomerViewSet)
 router.register(r'orders', OrderViewSet)
 router.register(r'payments', PaymentViewSet)
 router.register(r'coupons', CouponViewSet)

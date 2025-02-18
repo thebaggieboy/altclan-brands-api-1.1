@@ -51,7 +51,11 @@ class Withdraw(models.Model):
 class Order(models.Model): 
     user = models.CharField(max_length=250,  default='', null=True)
     item = ArrayField(models.JSONField(), default=list)  
+    total=models.IntegerField()
+    ref_code=models.CharField(max_length=250,  default='', null=True)
+    
     date_created = models.DateTimeField(default=timezone.now())
+
 
     def __str__(self):
         return f'{self.tracking_number}'
@@ -59,7 +63,6 @@ class Order(models.Model):
 
 class Payment(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True,related_name='user_order')
-    paystack_charge_id = models.CharField(max_length=50, default='', null=True, blank=True)
     paystack_reference_number = models.CharField(max_length=250, blank=True, null=True)
     amount = models.FloatField()
     status = models.CharField(max_length=250, null=True, blank=True)
@@ -85,9 +88,8 @@ class Coupon(models.Model):
 
 class Sales(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True,related_name='sales_order')
-    amount = models.FloatField()
     revenue = models.FloatField()
-    status = models.CharField(max_length=250, default='Sold')
+    
     def __str__(self):
         return self.code
 

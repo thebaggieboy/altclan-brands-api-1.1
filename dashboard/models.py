@@ -5,6 +5,8 @@ from django.template.defaultfilters import slugify
 class Customers(models.Model):
     #id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)
     brand_name = models.CharField(max_length=250, null=True, blank=True)
+    email = models.CharField(max_length=250, null=True, blank=True)
+    full_name = models.CharField(max_length=250, null=True, blank=True)
     first_name = models.CharField(max_length=250, null=True, blank=True)
     last_name = models.CharField(max_length=250, null=True, blank=True)
     
