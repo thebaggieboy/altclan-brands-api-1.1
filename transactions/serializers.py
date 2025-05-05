@@ -4,7 +4,7 @@ from .models import *
 class OrderSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Order
-        fields = ['id', 'user', 'item', 'total', 'ref_code', 'date_created'] 
+        fields = ['id', 'user', 'item', 'total', 'ref_code', 'date_created', 'status', 'quantity']   
 
 
 

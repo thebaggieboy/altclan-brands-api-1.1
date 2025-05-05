@@ -52,13 +52,15 @@ class Order(models.Model):
     user = models.CharField(max_length=250,  default='', null=True)
     item = ArrayField(models.JSONField(), default=list)  
     total=models.IntegerField()
+    quantity=models.IntegerField()
     ref_code=models.CharField(max_length=250,  default='', null=True)
+    status=models.CharField(max_length=250,  default='pending', null=True)
     
     date_created = models.DateTimeField(default=timezone.now())
 
 
     def __str__(self):
-        return f'{self.tracking_number}'
+        return f'{self.ref_code}'
 
 
 class Payment(models.Model):
