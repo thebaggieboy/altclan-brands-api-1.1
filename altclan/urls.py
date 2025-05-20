@@ -43,7 +43,7 @@ urlpatterns = [
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
     path('api/daily-orders/', get_daily_orders, name='daily_orders'),
-    path('notifications/', include('notifications.urls', namespace='notifications')),
+  
     path('api/notifications/', views.NotificationListAPI.as_view(), name='notification-list'),
     path('api/notifications/unread_count/', views.UnreadNotificationCountAPI.as_view(), name='unread-count'),
     path('api/notifications/mark_as_read/', views.MarkAsReadAPI.as_view(), name='mark-as-read'),

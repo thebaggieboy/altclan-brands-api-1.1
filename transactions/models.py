@@ -46,7 +46,7 @@ class Accounts(models.Model):
     def __str__(self):
         return self.bank_code
 class Cards(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True,related_name='sales_order')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True,related_name='user_cards')
     card_holder = models.CharField(max_length=250,  default='', null=True)
     card_number = models.CharField(max_length=20, default='', null=True)
     expiry_date = models.CharField(max_length=15, default='', null=True)
