@@ -12,7 +12,7 @@ from communities.views import *
 from reviews.views import *
 from auctions.views import *
 from dashboard.views import *
-from notifications.views import *
+from notifications import views
 
 
 from transactions.views import get_daily_orders
@@ -33,6 +33,7 @@ router.register(r'coupons', CouponViewSet)
 router.register(r'refund', RefundViewSet)
 router.register(r'reviews', ReviewViewSet)
 router.register(r'blog', BlogsViewSet)
+router.register('notifications', views.NotificationListAPI)
 
 
 urlpatterns = [
@@ -42,7 +43,11 @@ urlpatterns = [
     path('', include('rest_framework.urls', namespace='rest_framework')),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
-    path('api/daily-orders/', get_daily_orders, name='daily_orders')
+    path('api/daily-orders/', get_daily_orders, name='daily_orders'),
+    path('notifications/', include('notifications.urls', namespace='notifications')),
+    path('api/notifications/', views.NotificationListAPI.as_view(), name='notification-list'),
+    path('api/notifications/unread_count/', views.UnreadNotificationCountAPI.as_view(), name='unread-count'),
+    path('api/notifications/mark_as_read/', views.MarkAsReadAPI.as_view(), name='mark-as-read'),
    
   
   

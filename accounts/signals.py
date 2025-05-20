@@ -19,14 +19,13 @@ def create_profile(sender, instance, created, **kwargs):
         email_from = 'noreply@altclan.com'
 
         message = f"""
-            Welcome to Altclan {instance.email} We’re thrilled to have you join our vibrant community of fashion enthusiasts and aesthetes.
-            At Altclan, we strive to bring you the latest trends and unique pieces that elevate your style and express your individuality. 
-            Whether you’re looking for the latest fashion, exclusive designs, or aesthetic inspirations, we’ve got you covered.
-
+            Welcome to Altclan {instance.email} We’re thrilled to have you join our vibrant community of fashion labels and brands.
+            At Altclan, we strive to connect you with interested consumers who love the latest trends and unique pieces that you own. 
+       
             To get started, here are a few things you can do:
-            Explore Our Collections: Discover a curated selection of fashion items and aesthetic pieces tailored to your taste.
             Personalize Your Profile: Complete your profile to receive personalized recommendations and exclusive offers.
-            We’re here to support you every step of the way. If you have any questions or need assistance, feel free to reach out to our support team at support@altclan.com
+            Upload Products: Start uploading your merchandise and track orders, payments and customers in your dashboard.
+            We are here to support you every step of the way. If you have any questions or need assistance, feel free to reach out to our support team at support@altclan.com
 
             Thank you for choosing Altclan. We look forward to being a part of your fashion journey!
             Best regards,
