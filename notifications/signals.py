@@ -1,7 +1,7 @@
 # notifications/signals.py
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from .models import Notification, Comment, Post
+from .models import Notification
 from accounts.models import CustomUser
 from accounts.models import CustomUser
 from brands.models import Merchandise
@@ -16,25 +16,25 @@ from asgiref.sync import async_to_sync
 def create_comment_notification(sender, instance, created, **kwargs):
     if created:
         Notification.objects.create(
-            user=instance.post.author,
-            sender=instance.author,
+            user=instance.email,
+            sender=instance.email,
             notification_type='COMMENT',
-            message=f"{instance.author.username} commented on your post",
-            target_url=f"/posts/{instance.post.id}/"
+            message=f"{instance.email} commented on your post",
+            target_url=f"/reviews/{instance.post.id}/"
         )
         
         # Send real-time notification
         channel_layer = get_channel_layer()
         async_to_sync(channel_layer.group_send)(
-            f"notifications_{instance.post.author.id}",
+            f"notifications_{instance.id}",
             {
                 'type': 'send_notification',
                 'notification': {
                     'id': instance.id,
-                    'message': f"{instance.author.username} commented on your post",
+                    'message': f"{instance.email} made a review on your product",
                     'is_read': False,
                     'created_at': str(instance.created_at),
-                    'target_url': f"/posts/{instance.post.id}/"
+                    'target_url': f"/reviews/{instance.id}/"
                 }
             }
         )
@@ -49,7 +49,7 @@ def create_new_user_notification(sender, instance, created, **kwargs):
             sender=instance.brand_name,
             notification_type='NEW ACCOUNT',
             message=f"Welcome to altclan {instance.brand_name}, you can get started by uploading your products",
-            target_url=f"/new_account/{instance.id}/"
+            target_url=f"/brands/profile/{instance.id}/"
         )
         
         # Send real-time notification
@@ -63,7 +63,7 @@ def create_new_user_notification(sender, instance, created, **kwargs):
                     'message': f"Welcome to altclan {instance.brand_name}, you can get started by uploading your products",
                     'is_read': False,
                     'created_at': str(instance.created_at),
-                    'target_url': f"/posts/{instance.id}/"
+                    'target_url': f"/brands/profile/{instance.id}/"
                 }
             }
         )

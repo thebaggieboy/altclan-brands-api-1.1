@@ -1,7 +1,7 @@
 # notifications/signals.py
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from .models import Notification, Comment, Post
+from notifications.models import Notification
 from accounts.models import CustomUser
 from transactions.models import Payment, Coupon, Order
  

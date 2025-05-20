@@ -6,7 +6,7 @@ from .models import Profile
 from accounts.models import BrandUser
 from .models import CustomUser
 from accounts.models import BrandProfile
-from brands.models import UserBillingAddress, BillingAddress, BrandDashboard, ShippingAddress, Gallery
+from brands.models import ShippingAddress, BillingAddress, BrandDashboard, ShippingAddress, Gallery
 from django.core.mail import send_mail
 
 
