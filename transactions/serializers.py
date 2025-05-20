@@ -17,7 +17,7 @@ class PaymentSerializer(serializers.HyperlinkedModelSerializer):
 class CouponSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Coupon
-        fields = ['id', 'code', 'amount']
+        fields = ['id', 'code', 'amount', 'name', 'description', 'minimum_purchase', 'usage_limit', 'usage_limit_per_user', 'status', 'start_date', 'end_date']
 
 
 
@@ -34,7 +34,16 @@ class SalesSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['id', 'user', 'revenue']
 
 
+class BankSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Accounts
+        fields = ['id', 'bank_name' ]
 
+
+class CardSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Cards
+        fields = ['id', 'card_holder' ]
 class DepositSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Deposit

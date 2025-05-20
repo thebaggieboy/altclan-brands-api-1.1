@@ -108,11 +108,20 @@ class PaymentViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
 
+class BankViewSet(viewsets.ModelViewSet):
+    queryset = Accounts.objects.all()
+    serializer_class = BankSerializer
+
+class CardViewSet(viewsets.ModelViewSet):
+    queryset = Accounts.objects.all()
+    serializer_class = CardSerializer
+
+
 
 
 class CouponViewSet(viewsets.ModelViewSet):
-    queryset = Order.objects.all()
-    serializer_class = OrderSerializer
+    queryset = Coupon.objects.all()
+    serializer_class = CouponSerializer
 
 
 class RefundViewSet(viewsets.ModelViewSet):

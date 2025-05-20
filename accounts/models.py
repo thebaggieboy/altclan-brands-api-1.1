@@ -130,6 +130,11 @@ class CustomUser(AbstractBaseUser):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = [] # Email & Password are required by default.
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(f'{self.brand_name}')
+        return super().save(*args, **kwargs)
 
     def get_full_name(self):
         # The user is identified by their email address
@@ -195,6 +200,11 @@ class BrandUser(AbstractBaseUser):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = [] # Email & Password are required by default.
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(f'{self.brand_name}')
+        return super().save(*args, **kwargs)
 
     def get_full_name(self):
         # The user is identified by their email address

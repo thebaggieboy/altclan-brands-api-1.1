@@ -8,7 +8,7 @@ from djoser.serializers import UserCreateSerializer as BaseUserCreateSerializer
 # Custom Serializer for Djoser Library 
 class UserCreateSerializer(BaseUserCreateSerializer):
     class Meta(BaseUserCreateSerializer.Meta):
-        fields = ['id', 'email', 'password' ]
+        fields = ['id',  'email', 'password' ]
        
 class BlogSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -19,7 +19,7 @@ class BlogSerializer(serializers.HyperlinkedModelSerializer):
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ['id', 'email', 'brand_name', 'brand_logo',  'brand_bio', 'followers', 'brand_type', 'mobile_number']
+        fields = ['id', 'slug',  'email', 'brand_name', 'brand_logo',  'brand_bio', 'followers', 'brand_type', 'mobile_number']
 
 class BrandUserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

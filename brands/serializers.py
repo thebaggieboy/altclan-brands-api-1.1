@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import  Merchandise, Leads, BrandDashboard, Gallery
+from .models import  Merchandise, Leads, BrandDashboard, Gallery, ShippingAddress
 from django.conf import settings
 from accounts.models import BrandProfile
 
@@ -37,7 +37,13 @@ class MerchandiseSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Merchandise
         fields = [
-            'id','brand_name', 'merchandise_name', 'available_sizes', 'available_colors', 'labels', 'delivery_cost',  'merchandise_description', 'merchandise_details', 'price', 'display_image', 'reviews', "merchandise_type", "merchandise_gender"
+            'id', 'slug', 'brand_name', 'merchandise_name', 'available_sizes', 'available_colors', 'labels', 'delivery_cost',  'merchandise_description', 'merchandise_details', 'price', 'display_image', 'reviews', "merchandise_type", "merchandise_gender"
         ]
         
+
+class ShippingAddressSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = ShippingAddress
+        fields = ['id','user', 'street_address',  'city', 'state', 'zip']
+
 

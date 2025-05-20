@@ -8,6 +8,7 @@ User = settings.AUTH_USER_MODEL
 
 # Create your models here.
 class Reviews(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reviews')
     email = models.CharField(max_length=250, blank=True, null=True)
     merchandise_name = models.CharField(max_length=250, blank=True, null=True)
     review = models.TextField(default='', blank=True, null=True)
@@ -18,6 +19,7 @@ class Reviews(models.Model):
 
  
 class Ratings(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='ratings')
     email = models.CharField(max_length=250, blank=True, null=True)
     merchandise_name = models.CharField(max_length=250, blank=True, null=True)
     brand_name = models.CharField(max_length=250, blank=True, null=True)

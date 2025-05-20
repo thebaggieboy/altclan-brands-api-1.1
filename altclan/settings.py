@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountConfig',
     'dashboard.apps.DashboardConfig',
     'transactions.apps.TransactionsConfig',
+    'notifications.apps.NotificationsConfig',
     'reviews.apps.ReviewsConfig',
     'allauth',
     'allauth.account',
@@ -52,9 +53,11 @@ INSTALLED_APPS = [
     'corsheaders',
     'crispy_forms',
     'rest_framework_simplejwt',
+    'channels',
   
   
 ]
+
 
 
 MIDDLEWARE = [
@@ -91,6 +94,29 @@ TEMPLATES = [
     },
 ]
 
+# Channel layers (development)
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}
+# WebSocket authentication
+CHANNELS_WS_PROTOCOLS = ["websocket"]
+
+# Channel layers (production - Redis)
+# CHANNEL_LAYERS = {
+#     "default": {
+#         "BACKEND": "channels_redis.core.RedisChannelLayer",
+#         "CONFIG": {
+#             "hosts": [("redis://:password@redis:6379/0")],
+#             "symmetric_encryption_keys": [SECRET_KEY],
+#         },
+#     },
+# }
+
+# Channels configuration
+ASGI_APPLICATION = 'altclan.asgi.application'
+
 WSGI_APPLICATION = 'altclan.wsgi.application'
 
 
@@ -98,7 +124,7 @@ WSGI_APPLICATION = 'altclan.wsgi.application'
 # docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default='postgres://postgresql://altclan_svfm_user:QTu317BmDkhFKEnK8xHeoK1BajSaBbID@dpg-cvvcnl2dbo4c73aqtu10-a.oregon-postgres.render.com/altclan_svfm')
+    'default': dj_database_url.config(default='postgres://postgresql://altclan_jr88_user:Q069W2ENBamJI8BGwYpH35IVD1eDxKoP@dpg-d0m4pgruibrs73851mh0-a.oregon-postgres.render.com/altclan_jr88')
 }
 
 

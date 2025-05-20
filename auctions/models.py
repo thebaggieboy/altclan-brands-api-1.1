@@ -7,6 +7,12 @@ class Auctions(models.Model):
   
     user = models.CharField(max_length=250, null=True, blank=True)
     merchandise_name = models.CharField(max_length=250, null=True, blank=True)
+    merchandise_type = models.CharField(default='', null=True, blank=True, max_length=250)
+    merchandise_description = models.TextField(default='')
+    merchandise_details = models.TextField(default='',  null=True, blank=True)
+    merchandise_gender = models.CharField(default='', null=True, blank=True, max_length=250)
+    #display_image = models.ImageField(upload_to='Display Picture', default='') 
+    display_image = models.URLField()
     minimum_bid = models.CharField(max_length=250, null=True, blank=True)
     asking_price = models.CharField(max_length=250, null=True, blank=True)
     current_top_bid = models.CharField(max_length=250, null=True, blank=True)

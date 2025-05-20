@@ -12,6 +12,8 @@ from communities.views import *
 from reviews.views import *
 from auctions.views import *
 from dashboard.views import *
+from notifications.views import *
+
 
 from transactions.views import get_daily_orders
 

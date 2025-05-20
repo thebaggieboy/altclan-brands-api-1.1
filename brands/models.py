@@ -41,11 +41,11 @@ class Merchandise(models.Model):
     available_colors = ArrayField(models.CharField(max_length=250, null=True, blank=True), default=list)
     merchandise_type = models.CharField(default='', null=True, blank=True, max_length=250)
     merchandise_description = models.TextField(default='')
-    merchandise_details = models.TextField(default='')
+    merchandise_details = models.TextField(default='',  null=True, blank=True)
     merchandise_gender = models.CharField(default='', null=True, blank=True, max_length=250)
     #display_image = models.ImageField(upload_to='Display Picture', default='') 
     display_image = models.URLField()
-    reviews = ArrayField(models.JSONField(), default=list)
+    reviews = ArrayField(models.CharField(max_length=250, null=True, blank=True), default=list)
     image_1 = models.ImageField(upload_to='Merch Image', default='', null=True, blank=True)
     image_2 = models.ImageField(upload_to='Merch Image', default='', null=True, blank=True)
     image_3 = models.ImageField(upload_to='Merch Image', default='', null=True, blank=True)
@@ -64,7 +64,7 @@ class Merchandise(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(f'{self.id}')
+            self.slug = slugify(f'{self.merchandise_name}')
         return super().save(*args, **kwargs)
 
 
@@ -108,9 +108,9 @@ class BillingAddress(models.Model):
     def __str__(self):
         return f'{self.user}'
     
-class UserBillingAddress(models.Model):
+class ShippingAddress(models.Model):
     
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user_address', null=True, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='shipping_address', null=True, blank=True)
     street_address = models.CharField(max_length=250, default='')
     city = models.CharField(max_length=250, default='')
     state = models.CharField(max_length=250, default='')
@@ -147,8 +147,21 @@ class WishList(models.Model):
 # Represent a particular product order
 
 class Gallery(models.Model):
+    
 
-    brand_name = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True, related_name='user_gallery')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='brand_gallery')
+   
+    images = ArrayField(models.CharField(max_length=250),blank=True, null=True)
+    date_created = models.DateTimeField(default=timezone.now())
+
+    def __str__(self):
+        return f'{self.brand_name} x Gallery '
+    
+class MerchandiseGallery(models.Model):
+    
+
+    # Each Merch GalLery belongs to a Merch
+    merchandise = models.ForeignKey(Merchandise, on_delete=models.CASCADE, null=True, blank=True, related_name='merchanidse_gallery')
    
     images = ArrayField(models.CharField(max_length=250),blank=True, null=True)
     date_created = models.DateTimeField(default=timezone.now())
