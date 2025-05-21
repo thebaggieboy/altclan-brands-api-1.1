@@ -62,10 +62,7 @@ class Merchandise(models.Model):
     def __str__(self):
         return f'Merchandise Name : {self.merchandise_name}'
 
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(f'{self.merchandise_name}')
-        return super().save(*args, **kwargs)
+ 
 
 
 class Blog(models.Model):

@@ -4,7 +4,7 @@ from django.conf import settings
 from django.dispatch import receiver
  
 from accounts.models import BrandUser
- 
+ from django.template.defaultfilters import slugify
 from accounts.models import BrandProfile
 from brands.models import ShippingAddress, BillingAddress, BrandDashboard, Merchandise, Gallery, MerchandiseGallery
 
@@ -23,7 +23,9 @@ def create_merchandise_gallery(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=Merchandise)
 def save_merchandise_gallery(sender, instance, **kwargs):
-    instance.merchandise_gallery.save()
+    if not instance.slug:
+        instance.slug = slugify(f'{instance.merchandise_name}')
+
     print("------ Merchandise Gallery saved! ------")
  
    
