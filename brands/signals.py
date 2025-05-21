@@ -4,7 +4,7 @@ from django.conf import settings
 from django.dispatch import receiver
  
 from accounts.models import BrandUser
- from django.template.defaultfilters import slugify
+from django.template.defaultfilters import slugify
 from accounts.models import BrandProfile
 from brands.models import ShippingAddress, BillingAddress, BrandDashboard, Merchandise, Gallery, MerchandiseGallery
 
