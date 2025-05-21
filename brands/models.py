@@ -161,7 +161,7 @@ class MerchandiseGallery(models.Model):
     
 
     # Each Merch GalLery belongs to a Merch
-    merchandise = models.ForeignKey(Merchandise, on_delete=models.CASCADE, null=True, blank=True, related_name='merchanidse_gallery')
+    merchandise = models.ForeignKey(Merchandise, on_delete=models.CASCADE, null=True, blank=True, related_name='merchandise_gallery')
    
     images = ArrayField(models.CharField(max_length=250),blank=True, null=True)
     date_created = models.DateTimeField(default=timezone.now())
