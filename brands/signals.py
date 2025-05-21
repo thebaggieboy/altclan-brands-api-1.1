@@ -16,6 +16,8 @@ User = settings.AUTH_USER_MODEL
 def create_merchandise_gallery(sender, instance, created, **kwargs):
     if created:
         MerchandiseGallery.objects.create(merchandise=instance)
+        instance.slug = slugify(f'{instance.merchandise_name}')
+        
  
    
         print("------ Merchandise Gallery Created! ------")
@@ -25,7 +27,8 @@ def create_merchandise_gallery(sender, instance, created, **kwargs):
 def save_merchandise_gallery(sender, instance, **kwargs):
     if not instance.slug:
         instance.slug = slugify(f'{instance.merchandise_name}')
-
-    print("------ Merchandise Gallery saved! ------")
+        print("------ Merchandise Slug saved! ------")
  
+
+  
    
