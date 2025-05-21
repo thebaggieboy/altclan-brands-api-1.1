@@ -16,10 +16,13 @@ class GalleryViewSet(viewsets.ModelViewSet):
     serializer_class = GallerySerializer
     #order_by = ['date_created']
 
-
-class LeadsViewSet(viewsets.ModelViewSet):
-    queryset = Leads.objects.all()
-    serializer_class = LeadsSerializer
+class GalleryViewSet(viewsets.ModelViewSet):
+    queryset = Gallery.objects.all().order_by('-date_created').values()
+    serializer_class = GallerySerializer
+    #order_by = ['date_created']
+class ShippingAddressViewSet(viewsets.ModelViewSet):
+    queryset = ShippingAddress.objects.all()
+    serializer_class = ShippingAddressSerializer
 
 
 

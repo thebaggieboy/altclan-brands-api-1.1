@@ -33,8 +33,11 @@ router.register(r'coupons', CouponViewSet)
 router.register(r'refund', RefundViewSet)
 router.register(r'reviews', ReviewViewSet)
 router.register(r'blog', BlogsViewSet)
- 
 
+ 
+router.register(r'shipping_address', ShippingAddressViewSet)
+
+ 
 urlpatterns = [
 
     path('admin/', admin.site.urls),

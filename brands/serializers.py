@@ -12,7 +12,7 @@ BrandUser = settings.BRAND_USER_MODEL
 class GallerySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Gallery
-        fields = ['brand_name','images']
+        fields = ['user','images']
         
 class BrandProfileSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
