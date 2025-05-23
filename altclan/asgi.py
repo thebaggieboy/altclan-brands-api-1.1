@@ -1,18 +1,22 @@
 import os
 from django.core.asgi import get_asgi_application
-from channels.routing import ProtocolTypeRouter, URLRouter
-from channels.auth import AuthMiddlewareStack
-import notifications  # Import your app's routing
-import chats
 
+# Set Django settings module FIRST
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'altclan.settings')
 
+# Initialize Django ASGI app BEFORE importing dependencies that require Django
+django_asgi_app = get_asgi_application()
+
+# Now import Channels and routing
+from channels.routing import ProtocolTypeRouter, URLRouter
+from channels.auth import AuthMiddlewareStack
+from notifications import routing  # Now safe to import
+
 application = ProtocolTypeRouter({
-    "http": get_asgi_application(),
+    "http": django_asgi_app,  # Use the pre-loaded ASGI app
     "websocket": AuthMiddlewareStack(
         URLRouter(
-            notifications.routing.websocket_urlpatterns,
-            chats.routing.websocket_urlpatterns,
+            routing.websocket_urlpatterns
         )
     ),
 })

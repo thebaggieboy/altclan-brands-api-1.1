@@ -1,10 +1,10 @@
 # notifications/signals.py
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from .models import Notification
+from notifications.models import Notification
 from accounts.models import CustomUser
 from accounts.models import CustomUser
-from .models import Community, CommunityPost    
+from communities.models import Community, CommunityPost    
 from brands.models import Merchandise
 from transactions.models import Payment, Coupon, Order
 from reviews.models import Reviews
