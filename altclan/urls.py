@@ -15,7 +15,7 @@ from dashboard.views import *
 from notifications import views
 
 
-from transactions.views import get_daily_orders
+from transactions.views import get_daily_orders, get_monthly_orders
 
 
 from rest_framework_simplejwt import views as jwt_views
@@ -33,8 +33,6 @@ router.register(r'coupons', CouponViewSet)
 router.register(r'refund', RefundViewSet)
 router.register(r'reviews', ReviewViewSet)
 router.register(r'blog', BlogsViewSet)
-
- 
 router.register(r'shipping_address', ShippingAddressViewSet)
 
  
@@ -46,6 +44,7 @@ urlpatterns = [
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
     path('api/daily-orders/', get_daily_orders, name='daily_orders'),
+    path('api/monthly-orders/', get_monthly_orders, name='monthly_orders'),
   
     path('api/notifications/', views.NotificationListAPI.as_view(), name='notification-list'),
     path('api/notifications/unread_count/', views.UnreadNotificationCountAPI.as_view(), name='unread-count'),

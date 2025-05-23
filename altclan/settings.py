@@ -24,6 +24,7 @@ ALLOWED_HOSTS = ['altclan-api.onrender.com', 'altclan-brands-api-1-1.onrender.co
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -95,25 +96,22 @@ TEMPLATES = [
 ]
 
 # Channel layers (development)
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer"
-    }
-}
+#CHANNEL_LAYERS = {
+#    "default": {
+#        "BACKEND": "channels.layers.InMemoryChannelLayer"
+#    }
+#}
 # WebSocket authentication
 CHANNELS_WS_PROTOCOLS = ["websocket"]
 
-# Channel layers (production - Redis)
-# CHANNEL_LAYERS = {
-#     "default": {
-#         "BACKEND": "channels_redis.core.RedisChannelLayer",
-#         "CONFIG": {
-#             "hosts": [("redis://:password@redis:6379/0")],
-#             "symmetric_encryption_keys": [SECRET_KEY],
-#         },
-#     },
-# }
-
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
 # Channels configuration
 ASGI_APPLICATION = 'altclan.asgi.application'
 
