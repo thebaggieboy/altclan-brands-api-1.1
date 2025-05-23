@@ -71,8 +71,10 @@ class Blog(models.Model):
     title = models.CharField(max_length=250, null=True, blank=True)
     subject = models.TextField()
     slug = models.SlugField(null=True, blank=True, default='')
+    date_created = models.DateTimeField(default=timezone.now())
+    
     def __str__(self):
-        return f'Brands Blogs'
+        return f'{self.brand_name} articles'
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -83,9 +85,11 @@ class Blog(models.Model):
 class Leads(models.Model):
     id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)
     brand_name = models.CharField(max_length=250, null=True, blank=True)
+    email_address = models.CharField(max_length=250, null=True, blank=True)
     instagram_username = models.CharField(max_length=250, null=True, blank=True)
     website_link = models.CharField(max_length=250, null=True, blank=True)
     slug = models.SlugField(null=True, blank=True, default='')
+    
     def __str__(self):
         return f'Brands Leads'
 

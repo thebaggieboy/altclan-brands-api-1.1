@@ -18,7 +18,7 @@ def create_comment_notification(sender, instance, created, **kwargs):
         Notification.objects.create(
             user=instance.email,
             sender=instance.email,
-            notification_type='COMMENT',
+            notification_type='REVIEWS',
             message=f"{instance.email} commented on your post",
             target_url=f"/reviews/{instance.post.id}/"
         )
@@ -39,6 +39,13 @@ def create_comment_notification(sender, instance, created, **kwargs):
             }
         )
 
+        
+@receiver(post_save, sender=Reviews)
+def save_comment_notification(sender, instance, **kwargs):
+    instance.user_reviews.save()
+    
+    print("------ Reviews saved! ------")
+ 
 # Add similar signal handlers for other events like likes, follows, etc.
 
 @receiver(post_save, sender=CustomUser)

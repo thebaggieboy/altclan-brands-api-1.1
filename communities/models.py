@@ -21,6 +21,10 @@ class Community(models.Model):
     community_name = models.CharField(max_length=50, default='', null=True, blank=True)
     community_bio = models.CharField(max_length=250, blank=True, null=True)
     members = ArrayField(models.CharField(max_length=250, null=True, blank=True), default=list)
+    posts = ArrayField(models.CharField(max_length=250, null=True, blank=True), default=list)
+    comments = ArrayField(models.CharField(max_length=250, null=True, blank=True), default=list)
+        
+
 
     timestamp = models.DateTimeField(auto_now_add=True)
 

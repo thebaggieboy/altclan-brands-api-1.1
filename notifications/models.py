@@ -16,7 +16,13 @@ class Notification(models.Model):
         ('SYSTEM', 'System'),
         ('ORDER', 'Order'),
         ('PAYMENT', 'Payment'),
-        ('NEW ACCOUNT', 'NEW ACCOUNT')
+        ('REVEIWS', 'Reviews'),
+        ('MERCHANDISE', 'Merchandise'),
+        ('BANK ACCOUNT', 'Bank Account'),
+        ('COMMUNITY', 'Community'),
+        ('COMMUNITY MEMBER', 'Community Member'),
+        ('BILLING', 'Billing'),
+        ('COUPON', 'Coupon')
         
     ]
     
@@ -32,7 +38,7 @@ class Notification(models.Model):
         ordering = ['-created_at']
     
     def __str__(self):
-        return f"{self.get_notification_type_display()} for {self.user.username}"
+        return f"{self.get_notification_type_display()} for {self.user.email}"
 
 
 

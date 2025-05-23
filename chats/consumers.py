@@ -4,6 +4,7 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.db import database_sync_to_async
 from django.contrib.auth.models import AnonymousUser
 from .models import ChatRoom, Message
+import datetime 
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
@@ -54,7 +55,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             {
                 'type': 'chat_message',
                 'message': message,
-                'sender': self.user.username,
+                'sender': self.user.email,
                 'timestamp': str(datetime.now())
             }
         )
