@@ -4,8 +4,7 @@ from django.conf import settings
 from django.utils.text import slugify
 from datetime import timezone
 from django.contrib.postgres.fields import ArrayField
-from datetime import timezone
-
+ 
 User = settings.AUTH_USER_MODEL
 
 # Create your models here.
@@ -14,7 +13,7 @@ class Reviews(models.Model):
     email = models.CharField(max_length=250, blank=True, null=True)
     merchandise_name = models.CharField(max_length=250, blank=True, null=True)
     review = models.TextField(default='', blank=True, null=True)
-    created_at = models.DateTimeField(default=timezone.now)
+    created_at = models.DateTimeField()
     
     def __str__(self):
         return f'{self.email}'
