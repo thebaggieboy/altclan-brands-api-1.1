@@ -4,6 +4,7 @@ from django.conf import settings
 from django.utils.text import slugify
 from datetime import timezone
 from django.contrib.postgres.fields import ArrayField
+from datetime import timezone
 
 User = settings.AUTH_USER_MODEL
 
