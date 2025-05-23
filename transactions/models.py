@@ -177,8 +177,8 @@ class Refund(models.Model):
     
 class Customers(models.Model):
     #id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True,related_name='customers')
-    brand = models.OneToOneField(User, on_delete=models.CASCADE,  null=True, blank=True)
+    
+    brand = models.OneToOneField(User, on_delete=models.CASCADE,  null=True, blank=True,  related_name='brand_customers')
     brand_name = models.CharField(max_length=250, null=True, blank=True)
     email = models.CharField(max_length=250, null=True, blank=True)
     full_name = models.CharField(max_length=250, null=True, blank=True)
