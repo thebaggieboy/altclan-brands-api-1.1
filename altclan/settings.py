@@ -106,14 +106,13 @@ TEMPLATES = [
 CHANNELS_WS_PROTOCOLS = ["websocket"]
 
 CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-           "hosts": os.getenv("REDIS_URL"),
-       },
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": ["redis://red-d0oua23e5dus73d9hhug:6379"],  # Simple string format
+        },
     },
 }
-
 # Channels configuration
 ASGI_APPLICATION = 'altclan.asgi.application'
 
