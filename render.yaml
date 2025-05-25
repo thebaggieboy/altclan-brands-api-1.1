@@ -12,3 +12,7 @@ services:
         value: django-insecure-#ioqb6nvy+hwu5(%r@(dv!6zztc7vb*+altclbrandsapivhihr5*oe
       - key: ALLOWED_HOSTS
         value: altclan-brands-api-1-1.onrender.com
+      - key: DATABASE_URL
+        value: postgresql://altclan_h6ib_user:0zhEXWmY9YYFbR4pVzNBdmQmMHC1mg0f@dpg-d0oo7u0dl3ps73a5m080-a.oregon-postgres.render.com/altclan_h6ib
+      - key: REDIS_URL
+        value: redis://red-d0oua23e5dus73d9hhug:6379
