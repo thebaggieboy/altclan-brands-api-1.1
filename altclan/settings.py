@@ -24,7 +24,7 @@ ALLOWED_HOSTS = ['altclan-api.onrender.com', 'altclan-brands-api-1-1.onrender.co
 # Application definition
 
 INSTALLED_APPS = [
-    #'daphne',
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
