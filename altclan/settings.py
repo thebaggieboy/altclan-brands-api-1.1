@@ -24,7 +24,7 @@ ALLOWED_HOSTS = ['altclan-api.onrender.com', 'altclan-brands-api-1-1.onrender.co
 # Application definition
 
 INSTALLED_APPS = [
-    'daphne',
+    #'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -96,11 +96,12 @@ TEMPLATES = [
 ]
 
 # Channel layers (development)
-#CHANNEL_LAYERS = {
-#    "default": {
-#        "BACKEND": "channels.layers.InMemoryChannelLayer"
-#    }
-#}
+"""CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}
+"""
 # WebSocket authentication
 CHANNELS_WS_PROTOCOLS = ["websocket"]
 
@@ -108,10 +109,11 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
-        },
+           "hosts": os.getenv("REDIS_URL"),
+       },
     },
 }
+
 # Channels configuration
 ASGI_APPLICATION = 'altclan.asgi.application'
 
@@ -122,7 +124,7 @@ WSGI_APPLICATION = 'altclan.wsgi.application'
 # docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default='postgres://postgresql://altclan_jr88_user:Q069W2ENBamJI8BGwYpH35IVD1eDxKoP@dpg-d0m4pgruibrs73851mh0-a.oregon-postgres.render.com/altclan_jr88')
+    'default': dj_database_url.config(default='postgres://postgresql://altclan_h6ib_user:0zhEXWmY9YYFbR4pVzNBdmQmMHC1mg0f@dpg-d0oo7u0dl3ps73a5m080-a.oregon-postgres.render.com/altclan_h6ib')
 }
 
 

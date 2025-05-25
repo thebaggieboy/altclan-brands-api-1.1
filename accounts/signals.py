@@ -37,7 +37,7 @@ def create_profile(sender, instance, created, **kwargs):
 """
         recipient_list = [instance.email]
         Profile.objects.create(user=instance)
-        
+        Gallery.objects.create(user=instance)
         send_mail(subject, message, email_from, recipient_list )
 
         print("New brand profile has been created")
