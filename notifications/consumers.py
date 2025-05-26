@@ -73,3 +73,20 @@ class NotificationConsumer(AsyncWebsocketConsumer):
     @database_sync_to_async
     def mark_notification_as_read(self, notification_id):
         Notification.objects.filter(id=notification_id, user=self.user).update(is_read=True)
+        
+
+class TestConsumer(AsyncWebsocketConsumer):
+    async def connect(self):
+        await self.accept()
+        await self.send(text_data=json.dumps({
+            'message': 'Connected successfully!'
+        }))
+
+    async def disconnect(self, close_code):
+        pass
+
+    async def receive(self, text_data):
+        data = json.loads(text_data)
+        await self.send(text_data=json.dumps({
+            'message': f'Echo: {data.get("message", "")}'
+        }))
