@@ -41,33 +41,8 @@ def create_profile(sender, instance, created, **kwargs):
         send_mail(subject, message, email_from, recipient_list )
 
         print("New brand profile has been created")
-
-@receiver(post_save, sender=User)
-def save_profile(sender, instance, **kwargs):
-    instance.profile.save()
-    print("Profile saved!")
-   
+ 
 
 # If a new brand is created, silmultaneously create a profile & dashboard for the brand.
-@receiver(post_save, sender=BrandUser)
-def create_brand_profile(sender, instance, created, **kwargs):
-    if created:
-        BrandProfile.objects.create(user=instance)
-        BrandDashboard.objects.create(user=instance)
-        ShippingAddress.objects.create(user=instance)
-        Gallery.objects.create(user=instance)
-        
-   
-        print(" ------- [CREATED] Brand profile, dashboard & shipping address! ------")
-
-@receiver(post_save, sender=BrandUser)
-def save_brand_profile(sender, instance, **kwargs):
-    instance.brand_profile.save()
-    instance.brand_dashboard.save()
-    instance.shipping_address.save()
-    instance.brand_gallery.save()
-
-    print(" ------- [SAVED] Brand profile, dashboard & shipping address! ------")
-   
-   
+ 
 
