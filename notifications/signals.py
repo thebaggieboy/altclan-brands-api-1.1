@@ -51,10 +51,10 @@ def save_comment_notification(sender, instance, **kwargs):
 def create_new_user_notification(sender, instance, created, **kwargs):
     if created:
         Notification.objects.create(
-            user=instance.email,
-            sender=instance.email,
+            user=instance.user.email,
+            sender=instance.user.email,
             notification_type='NEW ACCOUNT',
-            message=f"Welcome to altclan {instance.email}, you can get started by uploading your products",
+            message=f"Welcome to altclan {instance.user.email}, you can get started by uploading your products",
             target_url=f"/brands/profile/{instance.id}/"
         )
         

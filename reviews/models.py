@@ -11,10 +11,12 @@ User = settings.AUTH_USER_MODEL
 class Reviews(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_reviews')
     email = models.CharField(max_length=250, blank=True, null=True)
+    merchandise_id=models.IntegerField(blank=True, null=True)
+    merchandise_slug = models.SlugField(max_length=250, blank=True, null=True)
     merchandise_name = models.CharField(max_length=250, blank=True, null=True)
     review = models.TextField(default='', blank=True, null=True)
     created_at = models.DateTimeField()
-    
+    2
     def __str__(self):
         return f'{self.email}'
 
