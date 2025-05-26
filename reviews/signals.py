@@ -103,7 +103,7 @@ def create_new_user_notification(sender, instance, created, **kwargs):
         notification = Notification.objects.create(
             user=instance,  # Use the CustomUser instance directly
             sender=instance,  # Self-notification for welcome message
-            notification_type='SYSTEM',  # Use 'SYSTEM' instead of 'NEW ACCOUNT'
+            notification_type='NEW ACCOUNT',  # Use 'SYSTEM' instead of 'NEW ACCOUNT'
             message=f"Welcome to altclan {instance.email}, you can get started by uploading your products",
             target_url=f"/brands/profile/{instance.id}/"
         )
