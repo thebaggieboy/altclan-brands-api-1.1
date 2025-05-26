@@ -18,14 +18,11 @@ class Customers(models.Model):
     last_name = models.CharField(max_length=250, null=True, blank=True)
     location = models.CharField(max_length=250, null=True, blank=True)
     status = models.CharField(max_length=250, null=True, blank=True)
-    mobile_number = models.IntegerField()
+    mobile_number = models.CharField(max_length=20, null=True, blank=True)
     orders = ArrayField(models.CharField(max_length=250, null=True, blank=True), default=list)  
     last_order = models.DateTimeField()
     date_created = models.DateTimeField(default=timezone.now())
-    total_amount_spent = ArrayField(models.CharField(max_length=250, null=True, blank=True), default=list)  
-   
-    
-    
+    total_amount_spent = ArrayField(models.CharField(max_length=250, null=True, blank=True), default=list)     
   
     slug = models.SlugField(null=True, blank=True, default='')
     

@@ -3,7 +3,6 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from .models import Notification
 from accounts.models import CustomUser
-from accounts.models import CustomUser
 from brands.models import Merchandise
 from transactions.models import Payment, Coupon, Order
 from reviews.models import Reviews
@@ -52,10 +51,10 @@ def save_comment_notification(sender, instance, **kwargs):
 def create_new_user_notification(sender, instance, created, **kwargs):
     if created:
         Notification.objects.create(
-            user=instance.brand_name,
-            sender=instance.brand_name,
+            user=instance.email,
+            sender=instance.email,
             notification_type='NEW ACCOUNT',
-            message=f"Welcome to altclan {instance.brand_name}, you can get started by uploading your products",
+            message=f"Welcome to altclan {instance.email}, you can get started by uploading your products",
             target_url=f"/brands/profile/{instance.id}/"
         )
         
@@ -67,7 +66,7 @@ def create_new_user_notification(sender, instance, created, **kwargs):
                 'type': 'send_notification',
                 'notification': {
                     'id': instance.id,
-                    'message': f"Welcome to altclan {instance.brand_name}, you can get started by uploading your products",
+                    'message': f"Welcome to altclan {instance.email}, you can get started by uploading your products",
                     'is_read': False,
                     'created_at': str(instance.created_at),
                     'target_url': f"/brands/profile/{instance.id}/"
