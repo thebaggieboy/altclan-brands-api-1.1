@@ -43,6 +43,7 @@ RANDOM_ORDER_ID = get_random_string(length=12)
 
 class Accounts(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True,related_name='user_accounts')
+    email = models.CharField(max_length=250,  default='', null=True)
     bank_name = models.CharField(max_length=15,  default='', null=True)
     bank_code = models.CharField(max_length=15, default='', null=True)
     account_name = models.CharField(max_length=15, default='', null=True)
@@ -53,6 +54,7 @@ class Accounts(models.Model):
     
 class Cards(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True,related_name='user_cards')
+    email = models.CharField(max_length=250,  default='', null=True)
     card_holder = models.CharField(max_length=250,  default='', null=True)
     card_number = models.CharField(max_length=20, default='', null=True)
     expiry_date = models.CharField(max_length=15, default='', null=True)
@@ -102,6 +104,7 @@ class PaymentMethod(models.Model):
 
 class Payment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True,related_name='user_payment')
+    email = models.CharField(max_length=250,  default='', null=True)
     paystack_reference_number = models.CharField(max_length=250, blank=True, null=True)
     customer = models.CharField(max_length=250, blank=True, null=True)
 
@@ -123,6 +126,7 @@ class Payment(models.Model):
 
 class Billing(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True,related_name='user_billing')
+    email = models.CharField(max_length=250,  default='', null=True)
     billing_period = models.CharField(max_length=250, blank=True, null=True)
     payment_method = models.CharField(max_length=250, blank=True, null=True) 
     card = models.ForeignKey(Cards, on_delete=models.CASCADE, null=True, blank=True)   
@@ -142,6 +146,7 @@ class Billing(models.Model):
 
 class Coupon(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True,related_name='user_coupon')
+    email = models.CharField(max_length=250,  default='', null=True)
     code = models.CharField(max_length=15)
     name = models.CharField(max_length=250, null=True, blank=True)
     description = models.CharField(max_length=15)
@@ -159,6 +164,7 @@ class Coupon(models.Model):
 
 class Sales(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True,related_name='user_sales')
+    email = models.CharField(max_length=250,  default='', null=True)
     revenue = models.FloatField()
     
     def __str__(self):
@@ -167,6 +173,7 @@ class Sales(models.Model):
 
 class Refund(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True,related_name='user_refund')
+    email = models.CharField(max_length=250,  default='', null=True)
     order = models.ForeignKey(Order, on_delete=models.CASCADE, null=True, blank=True)
     reason = models.TextField()
     accepted = models.BooleanField(default=False)
