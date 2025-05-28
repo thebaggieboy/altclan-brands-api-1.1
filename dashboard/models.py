@@ -20,7 +20,7 @@ class Customers(models.Model):
     status = models.CharField(max_length=250, null=True, blank=True)
     mobile_number = models.CharField(max_length=20, null=True, blank=True)
     orders = ArrayField(models.CharField(max_length=250, null=True, blank=True), default=list)  
-    last_order = models.DateTimeField()
+    last_order = models.DateTimeField(null=True, blank=True)
     date_created = models.DateTimeField(default=timezone.now())
     total_amount_spent = ArrayField(models.CharField(max_length=250, null=True, blank=True), default=list)     
   
