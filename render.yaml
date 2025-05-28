@@ -17,6 +17,6 @@ services:
       - key: CORS_ALLOW_ALL_ORIGINS
         value: "True"
       - key: DATABASE_URL
-        value: postgresql://altclan_h6ib_user:0zhEXWmY9YYFbR4pVzNBdmQmMHC1mg0f@dpg-d0oo7u0dl3ps73a5m080-a.oregon-postgres.render.com/altclan_h6ib
+        value: postgresql://altclan_u80j_user:4SkI6hC6Zj9pptNym9IZmCOpdCie3dxK@dpg-d0qhga3ipnbc73ecq650-a.oregon-postgres.render.com/altclan_u80j
       - key: REDIS_URL
         value: redis://red-d0oua23e5dus73d9hhug:6379

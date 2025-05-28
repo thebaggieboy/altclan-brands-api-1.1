@@ -123,7 +123,7 @@ WSGI_APPLICATION = 'altclan.wsgi.application'
 # docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default='postgres://postgresql://altclan_h6ib_user:0zhEXWmY9YYFbR4pVzNBdmQmMHC1mg0f@dpg-d0oo7u0dl3ps73a5m080-a.oregon-postgres.render.com/altclan_h6ib')
+    'default': dj_database_url.config(default='postgres://postgresql://altclan_u80j_user:4SkI6hC6Zj9pptNym9IZmCOpdCie3dxK@dpg-d0qhga3ipnbc73ecq650-a.oregon-postgres.render.com/altclan_u80j')
 }
 
 

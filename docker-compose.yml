@@ -7,7 +7,7 @@ services:
       - "${PORT:-8000}:${PORT:-8000}"
     environment:
       - PORT=${PORT:-8000}
-      - DATABASE_URL=postgresql://altclan_h6ib_user:0zhEXWmY9YYFbR4pVzNBdmQmMHC1mg0f@dpg-d0oo7u0dl3ps73a5m080-a.oregon-postgres.render.com/altclan_h6ib
+      - DATABASE_URL=postgresql://altclan_u80j_user:4SkI6hC6Zj9pptNym9IZmCOpdCie3dxK@dpg-d0qhga3ipnbc73ecq650-a.oregon-postgres.render.com/altclan_u80j
       - REDIS_URL=redis://red-d0oua23e5dus73d9hhug:6379
       - DJANGO_SETTINGS_MODULE=altclan.settings
       - SECRET_KEY=django-insecure-#ioqb6nvy+hwu5(%r@(dv!6zztc7vb*+altclbrandsapivhihr5*oe
