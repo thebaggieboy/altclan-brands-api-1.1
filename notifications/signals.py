@@ -55,7 +55,7 @@ def create_new_user_notification(sender, instance, created, **kwargs):
                 message=f"Welcome to altclan {email_text}! You can get started by uploading your products.",
                 target_url=f"/brands/profile/{instance.id}/"
             )
-            
+    
             # Log successful creation
             logger.info(f"Welcome notification created successfully for user {instance.id} ({instance.email})")
             print(f"✅ SUCCESS: Welcome notification created for user {instance.email} (ID: {instance.id})")
