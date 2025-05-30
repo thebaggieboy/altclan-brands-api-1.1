@@ -10,7 +10,15 @@ from django.core.exceptions import ValidationError
 
 from .models import Profile
 from accounts.models import BrandUser, BrandProfile, CustomUser
-from brands.models import ShippingAddress, BillingAddress, BrandDashboard, Gallery
+from brands.models import ShippingAddress, BillingAddress, BrandDashboard
+
+# Import Gallery with error handling
+try:
+    from brands.models import Gallery
+    GALLERY_AVAILABLE = True
+except ImportError:
+    GALLERY_AVAILABLE = False
+    logger.warning("Gallery model not available - skipping gallery creation")
 
 # Set up logging
 logger = logging.getLogger(__name__)
@@ -32,24 +40,24 @@ def create_profile_and_send_welcome_email(sender, instance, created, **kwargs):
         return
     
     try:
-        with transaction.atomic():
-            # Validate user instance
-            if not instance or not hasattr(instance, 'id') or not instance.id:
-                logger.error("Invalid user instance provided for profile creation")
-                print("❌ ERROR: Invalid user instance - cannot create profile")
-                return
-            
-            # Create Profile
-            try:
-                profile = Profile.objects.create(user=instance)
-                logger.info(f"Profile created successfully for user {instance.id}")
-                print(f"✅ SUCCESS: Profile created for user {instance.email} (ID: {instance.id})")
-            except Exception as profile_error:
-                logger.error(f"Failed to create profile for user {instance.id}: {profile_error}")
-                print(f"❌ ERROR: Failed to create profile for {instance.email}: {profile_error}")
-                return
-            
-            # Create Gallery
+        # Validate user instance first
+        if not instance or not hasattr(instance, 'id') or not instance.id:
+            logger.error("Invalid user instance provided for profile creation")
+            print("❌ ERROR: Invalid user instance - cannot create profile")
+            return
+        
+        # Create Profile (outside transaction to avoid blocking user creation)
+        try:
+            profile = Profile.objects.create(user=instance)
+            logger.info(f"Profile created successfully for user {instance.id}")
+            print(f"✅ SUCCESS: Profile created for user {instance.email} (ID: {instance.id})")
+        except Exception as profile_error:
+            logger.error(f"Failed to create profile for user {instance.id}: {profile_error}")
+            print(f"❌ ERROR: Failed to create profile for {instance.email}: {profile_error}")
+            # Don't return here - continue with other operations
+        
+        # Create Gallery (only if available and profile creation succeeded)
+        if GALLERY_AVAILABLE:
             try:
                 gallery = Gallery.objects.create(user=instance)
                 logger.info(f"Gallery created successfully for user {instance.id}")
@@ -57,20 +65,21 @@ def create_profile_and_send_welcome_email(sender, instance, created, **kwargs):
             except Exception as gallery_error:
                 logger.error(f"Failed to create gallery for user {instance.id}: {gallery_error}")
                 print(f"❌ ERROR: Failed to create gallery for {instance.email}: {gallery_error}")
-            
-            # Send Welcome Email
-            try:
-                send_welcome_email(instance)
-                logger.info(f"Welcome email sent successfully to {instance.email}")
-                print(f"📧 SUCCESS: Welcome email sent to {instance.email}")
-            except Exception as email_error:
-                logger.error(f"Failed to send welcome email to {instance.email}: {email_error}")
-                print(f"❌ ERROR: Failed to send welcome email to {instance.email}: {email_error}")
-                print("   📝 NOTE: User profile was still created successfully")
+        
+        # Send Welcome Email (separate transaction to not block user creation)
+        try:
+            send_welcome_email(instance)
+            logger.info(f"Welcome email sent successfully to {instance.email}")
+            print(f"📧 SUCCESS: Welcome email sent to {instance.email}")
+        except Exception as email_error:
+            logger.error(f"Failed to send welcome email to {instance.email}: {email_error}")
+            print(f"❌ ERROR: Failed to send welcome email to {instance.email}: {email_error}")
+            print("   📝 NOTE: User profile was still created successfully")
                 
     except Exception as e:
         logger.error(f"Unexpected error in profile creation for user {instance.id}: {e}")
         print(f"❌ UNEXPECTED ERROR: Failed to process new user {instance.email}: {e}")
+        # Don't re-raise the exception to avoid blocking user creation
 
 
 def send_welcome_email(user):
@@ -85,26 +94,27 @@ def send_welcome_email(user):
         print(f"⚠️  WARNING: User {user.id} has no email - skipping welcome email")
         return
     
-    subject = 'Welcome to Altclan - Your Fashion Journey Begins Now! 🎉'
-    email_from = settings.DEFAULT_FROM_EMAIL or 'noreply@altclan.com'
-    recipient_list = [user.email]
-    
-    # Context for email template
-    context = {
-        'user_email': user.email,
-        'user_name': getattr(user, 'first_name', '') or user.email.split('@')[0],
-        'profile_url': f"{getattr(settings, 'SITE_URL', 'https://altclan.com')}/brands/profile/{user.id}/",
-        'dashboard_url': f"{getattr(settings, 'SITE_URL', 'https://altclan.com')}/dashboard/",
-        'support_email': 'support@altclan.com',
-        'site_url': getattr(settings, 'SITE_URL', 'https://altclan.com'),
-        'year': 2025
-    }
-    
-    # Create HTML email content
-    html_content = create_welcome_email_html(context)
-    
-    # Create plain text version
-    text_content = f"""
+    try:
+        subject = 'Welcome to Altclan - Your Fashion Journey Begins Now! 🎉'
+        email_from = settings.DEFAULT_FROM_EMAIL or 'noreply@altclan.com'
+        recipient_list = [user.email]
+        
+        # Context for email template
+        context = {
+            'user_email': user.email,
+            'user_name': getattr(user, 'first_name', '') or user.email.split('@')[0],
+            'profile_url': f"{getattr(settings, 'SITE_URL', 'https://altclan.com')}/brands/profile/{user.id}/",
+            'dashboard_url': f"{getattr(settings, 'SITE_URL', 'https://altclan.com')}/dashboard/",
+            'support_email': 'support@altclan.com',
+            'site_url': getattr(settings, 'SITE_URL', 'https://altclan.com'),
+            'year': 2025
+        }
+        
+        # Create HTML email content
+        html_content = create_welcome_email_html(context)
+        
+        # Create plain text version
+        text_content = f"""
 Welcome to Altclan, {context['user_name']}!
 
 We're thrilled to have you join our vibrant community of fashion labels and brands.
@@ -130,11 +140,15 @@ Co-Founder, Altclan
 {context['site_url']}
 {email_from}
 """
-    
-    # Create and send email
-    email = EmailMultiAlternatives(subject, text_content, email_from, recipient_list)
-    email.attach_alternative(html_content, "text/html")
-    email.send(fail_silently=False)
+        
+        # Create and send email
+        email = EmailMultiAlternatives(subject, text_content, email_from, recipient_list)
+        email.attach_alternative(html_content, "text/html")
+        email.send(fail_silently=True)  # Changed to fail_silently=True
+        
+    except Exception as e:
+        logger.error(f"Email sending failed for {user.email}: {e}")
+        # Don't re-raise to avoid blocking user creation
 
 
 def create_welcome_email_html(context):
@@ -491,39 +505,38 @@ def create_brand_profile_and_dashboard(sender, instance, created, **kwargs):
         return
     
     try:
-        with transaction.atomic():
-            # Create Brand Profile
-            try:
-                brand_profile = BrandProfile.objects.create(brand_user=instance)
-                logger.info(f"Brand profile created successfully for brand {instance.id}")
-                print(f"✅ SUCCESS: Brand profile created for {instance.email} (ID: {instance.id})")
-            except Exception as profile_error:
-                logger.error(f"Failed to create brand profile for {instance.id}: {profile_error}")
-                print(f"❌ ERROR: Failed to create brand profile for {instance.email}: {profile_error}")
-                return
-            
-            # Create Brand Dashboard
-            try:
-                dashboard = BrandDashboard.objects.create(brand=instance)
-                logger.info(f"Brand dashboard created successfully for brand {instance.id}")
-                print(f"📊 SUCCESS: Brand dashboard created for {instance.email}")
-            except Exception as dashboard_error:
-                logger.error(f"Failed to create brand dashboard for {instance.id}: {dashboard_error}")
-                print(f"❌ ERROR: Failed to create brand dashboard for {instance.email}: {dashboard_error}")
-            
-            # Create default shipping and billing addresses
-            try:
-                ShippingAddress.objects.create(brand=instance, is_default=True)
-                BillingAddress.objects.create(brand=instance, is_default=True)
-                logger.info(f"Default addresses created for brand {instance.id}")
-                print(f"📍 SUCCESS: Default addresses created for {instance.email}")
-            except Exception as address_error:
-                logger.error(f"Failed to create default addresses for {instance.id}: {address_error}")
-                print(f"⚠️  WARNING: Failed to create default addresses for {instance.email}: {address_error}")
+        # Create Brand Profile (outside transaction to avoid blocking user creation)
+        try:
+            brand_profile = BrandProfile.objects.create(brand_user=instance)
+            logger.info(f"Brand profile created successfully for brand {instance.id}")
+            print(f"✅ SUCCESS: Brand profile created for {instance.email} (ID: {instance.id})")
+        except Exception as profile_error:
+            logger.error(f"Failed to create brand profile for {instance.id}: {profile_error}")
+            print(f"❌ ERROR: Failed to create brand profile for {instance.email}: {profile_error}")
+        
+        # Create Brand Dashboard
+        try:
+            dashboard = BrandDashboard.objects.create(brand=instance)
+            logger.info(f"Brand dashboard created successfully for brand {instance.id}")
+            print(f"📊 SUCCESS: Brand dashboard created for {instance.email}")
+        except Exception as dashboard_error:
+            logger.error(f"Failed to create brand dashboard for {instance.id}: {dashboard_error}")
+            print(f"❌ ERROR: Failed to create brand dashboard for {instance.email}: {dashboard_error}")
+        
+        # Create default shipping and billing addresses
+        try:
+            ShippingAddress.objects.create(brand=instance, is_default=True)
+            BillingAddress.objects.create(brand=instance, is_default=True)
+            logger.info(f"Default addresses created for brand {instance.id}")
+            print(f"📍 SUCCESS: Default addresses created for {instance.email}")
+        except Exception as address_error:
+            logger.error(f"Failed to create default addresses for {instance.id}: {address_error}")
+            print(f"⚠️  WARNING: Failed to create default addresses for {instance.email}: {address_error}")
                 
     except Exception as e:
         logger.error(f"Unexpected error in brand setup for {instance.id}: {e}")
         print(f"❌ UNEXPECTED ERROR: Failed to setup brand {instance.email}: {e}")
+        # Don't re-raise the exception
 
 
 # Utility function to test email sending
