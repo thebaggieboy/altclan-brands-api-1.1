@@ -4,7 +4,7 @@ from django.conf import settings
 from django.dispatch import receiver
 from .models import Profile
  
-from .models import AccountUser
+from .models import CustomUser
  
 from brands.models import UserBillingAddress, BillingAddress
 from django.core.mail import send_mail
