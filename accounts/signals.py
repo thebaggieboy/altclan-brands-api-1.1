@@ -3,14 +3,7 @@ from django.db.models.signals import post_save
 from django.conf import settings
 from django.dispatch import receiver
 from .models import Profile
- 
-from .models import CustomUser
- 
-from brands.models import UserBillingAddress, BillingAddress
 from django.core.mail import send_mail
-
-
-
 
 User = settings.AUTH_USER_MODEL
 @receiver(post_save, sender=User)
@@ -311,8 +304,8 @@ def create_profile(sender, instance, created, **kwargs):
             
             <!-- Call to Action -->
             <div class="cta-section">
-                <a href="{context['profile_url']}" class="cta-button">Complete Your Profile</a>
-                <a href="{context['dashboard_url']}" class="cta-button secondary">Visit Dashboard</a>
+                <a href="" class="cta-button">Complete Your Profile</a>
+                <a href="" class="cta-button secondary">Visit Dashboard</a>
             </div>
             
             <!-- Support Section -->
@@ -322,7 +315,7 @@ def create_profile(sender, instance, created, **kwargs):
                     We're here to support you every step of the way. If you have any questions or need assistance, 
                     our support team is ready to help!
                 </p>
-                <a href="mailto:{context['support_email']}" class="support-email">{context['support_email']}</a>
+                <a href="mailto: support@altclan.com" class="support-email">support@altclan.com</a>
             </div>
         </div>
         
@@ -333,12 +326,12 @@ def create_profile(sender, instance, created, **kwargs):
                 <div class="footer-title">Co-Founder, Altclan</div>
             </div>
             <div class="footer-links">
-                <a href="{context['site_url']}">Visit Website</a> |
-                <a href="mailto:{context['support_email']}">Contact Support</a> |
-                <a href="{context['site_url']}/privacy">Privacy Policy</a>
+                <a href="https://altclan.com">Visit Website</a> |
+                <a href="mailto: support@altclan.com">Contact Support</a> |
+
             </div>
             <p style="margin-top: 15px; font-size: 12px;">
-                © {context['year']} Altclan. All rights reserved.
+                © 2025 Altclan. All rights reserved.
             </p>
         </div>
     </div>
