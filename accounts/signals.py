@@ -260,7 +260,7 @@ def create_profile(sender, instance, created, **kwargs):
         
         <!-- Main Content -->
         <div class="content">
-            <h1 class="welcome-title">Welcome to Altclan, {context['user_name']}! <span class="emoji">🎉</span></h1>
+            <h1 class="welcome-title">Welcome to Altclan,  <span class="emoji">🎉</span></h1>
             
             <p class="welcome-text">
                 We're thrilled to have you join our vibrant community of fashion labels and brands. 
