@@ -38,7 +38,8 @@ PAYMENT_TYPE = (
     ('Bank Transfer', 'Bank Transfer'),
 )
 
-User = settings.AUTH_USER_MODEL
+from django.contrib.auth import get_user_model
+User = get_user_model()
 RANDOM_ORDER_ID = get_random_string(length=12)
 
 
@@ -145,6 +146,22 @@ class Billing(models.Model):
 
     def __str__(self):
         return str(self.timestamp)
+class Deliveries(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='user_deliveries')
+    email = models.CharField(max_length=250, default='', null=True)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, null=True, blank=True)
+    delivery_address = models.ForeignKey(BillingAddress, on_delete=models.CASCADE, null=True, blank=True)
+    tracking_number = models.CharField(max_length=250, default='', null=True)
+    
+    shipping_method = models.CharField(max_length=250, default='Standard Delivery', null=True, choices=SHIPPING_METHODS)
+    
+    
+    
+    delivery_date = models.DateTimeField(null=True, blank=True)
+    status = models.CharField(max_length=250, default='Pending', null=True)
+
+    def __str__(self):
+        return f'Delivery for {self.order.ref_code}' if self.order else 'Delivery'
 
 
 class Coupon(models.Model):
@@ -166,6 +183,18 @@ class Coupon(models.Model):
     def __str__(self):
         return self.code
 
+class Partners(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='user_partners')
+    email = models.CharField(max_length=250, default='', null=True)
+    name = models.CharField(max_length=250, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    website = models.URLField(max_length=250, null=True, blank=True)
+    logo = models.ImageField(upload_to='partners/', null=True, blank=True)
+    # FIXED: Use timezone.now without parentheses
+    date_created = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.name or 'Partner'
 
 class Sales(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='user_sales')
