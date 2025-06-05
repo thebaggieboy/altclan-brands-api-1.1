@@ -21,7 +21,7 @@ def create_new_user_notification(sender, instance, created, **kwargs):
             target_url=f"/brands/profile/{instance.id}/"
         )
         
-        # Send real-time notification
+"""        # Send real-time notification
         channel_layer = get_channel_layer()
         async_to_sync(channel_layer.group_send)(
             f"New account{instance.id}",
@@ -35,4 +35,4 @@ def create_new_user_notification(sender, instance, created, **kwargs):
                     'target_url': f"/brands/profile/{instance.id}/"
                 }
             }
-         )
+         )"""
