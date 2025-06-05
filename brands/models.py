@@ -37,8 +37,8 @@ class Merchandise(models.Model):
     size_type = models.CharField(default='', null=True, blank=True, max_length=250)
     color_type = models.CharField(default='', null=True, blank=True, max_length=250)
     # FIXED: Removed null=True from ArrayField items
-    available_sizes = ArrayField(models.CharField(max_length=250), default=list, blank=True)
-    available_colors = ArrayField(models.CharField(max_length=250), default=list, blank=True)
+    available_sizes = ArrayField(models.CharField(max_length=250), default=list, blank=True, null=True, )
+    available_colors = ArrayField(models.CharField(max_length=250), default=list, blank=True, null=True, )
     merchandise_type = models.CharField(default='', null=True, blank=True, max_length=250)
     merchandise_description = models.TextField(default='')
     merchandise_details = models.TextField(default='', null=True, blank=True)
