@@ -52,5 +52,6 @@ def create_profile(sender, instance, created, **kwargs):
             
         except Exception as e:
             print(f"Failed to send welcome email to {instance.email}: {str(e)}")
+            print(f"Error type: {type(e).__name__}")
             # You might want to log this error or handle it differently
             # depending on your application's error handling strategy
