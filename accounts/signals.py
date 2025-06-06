@@ -11,7 +11,7 @@ def create_profile(sender, instance, created, **kwargs):
     if created:
         subject = 'Welcome to Altclan'
 
-        message = f'Hi {instance.email},\n\nThank you for registering with Altclan. We are excited to have you on board!\n\nBest regards,\nAltclan Team'
+        message = f'Hi {instance.email},Thank you for registering with Altclan. We are excited to have you on board! Best regards, Altclan Team'
         email_from = 'noreply@altclan.com'
         recipient_list = [instance.email]
         
