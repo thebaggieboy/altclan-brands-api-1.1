@@ -15,7 +15,7 @@ class Reviews(models.Model):
     merchandise_slug = models.SlugField(max_length=250, blank=True, null=True)
     merchandise_name = models.CharField(max_length=250, blank=True, null=True)
     review = models.TextField(default='', blank=True, null=True)
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
         return f'{self.email}'
