@@ -9,7 +9,7 @@ BrandUser = settings.BRAND_USER_MODEL
 
 
 class Blog(models.Model):
-    id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)
+ 
     brand_name = models.CharField(max_length=250, null=True, blank=True)
     title = models.CharField(max_length=250, null=True, blank=True)
     subject = models.TextField()
