@@ -5,4 +5,4 @@ from .models import Blog
 class BlogSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Blog
-        fields = ['brand_name', 'title', 'subject', 'slug']
+        fields = ['id', 'brand_name', 'title', 'subject', 'slug']
