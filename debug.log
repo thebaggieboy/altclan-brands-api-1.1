@@ -22033,3 +22033,238 @@ DEBUG 2025-06-25 02:09:51,787 utils 2360 21176 (0.265) SELECT "django_content_ty
 DEBUG 2025-06-25 02:09:52,046 utils 2360 21176 (0.266) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'dj_rest_auth'; args=('dj_rest_auth',); alias=default
 DEBUG 2025-06-25 02:09:52,300 utils 2360 21176 (0.250) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'rest_framework_simplejwt'; args=('rest_framework_simplejwt',); alias=default
 DEBUG 2025-06-25 02:09:52,583 utils 2360 21176 (0.265) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'rest_framework_simplejwt'; args=('rest_framework_simplejwt',); alias=default
+DEBUG 2025-06-28 01:14:29,127 utils 35604 14100 (0.281) 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        ; args=None; alias=default
+DEBUG 2025-06-28 01:14:29,412 utils 35604 14100 (0.281) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-06-28 01:19:45,564 utils 32944 15628 (0.282) 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        ; args=None; alias=default
+DEBUG 2025-06-28 01:19:45,856 utils 32944 15628 (0.297) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-06-28 01:20:10,796 utils 24624 27832 (0.266) 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        ; args=None; alias=default
+DEBUG 2025-06-28 01:20:11,079 utils 24624 27832 (0.265) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-06-28 02:09:14,563 utils 33396 12868 (0.297) 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        ; args=None; alias=default
+DEBUG 2025-06-28 02:09:14,844 utils 33396 12868 (0.266) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-06-28 02:09:46,340 utils 34188 5428 (0.281) 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        ; args=None; alias=default
+DEBUG 2025-06-28 02:09:46,640 utils 34188 5428 (0.297) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-06-28 02:09:46,944 utils 34188 5428 (0.297) 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        ; args=None; alias=default
+DEBUG 2025-06-28 02:09:47,239 utils 34188 5428 (0.297) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-06-28 02:09:47,566 utils 34188 5428 (0.282) 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        ; args=None; alias=default
+DEBUG 2025-06-28 02:09:47,914 utils 34188 5428 (0.343) 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        ; args=None; alias=default
+DEBUG 2025-06-28 02:09:48,212 utils 34188 5428 (0.297) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-06-28 02:09:48,531 utils 34188 5428 (0.328) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'admin'; args=('admin',); alias=default
+DEBUG 2025-06-28 02:09:48,793 utils 34188 5428 (0.266) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'admin' AND "django_content_type"."model" = 'logentry') LIMIT 21; args=('admin', 'logentry'); alias=default
+DEBUG 2025-06-28 02:09:49,092 utils 34188 5428 (0.297) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (1) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(1,); alias=default
+DEBUG 2025-06-28 02:09:49,372 utils 34188 5428 (0.281) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'admin'; args=('admin',); alias=default
+DEBUG 2025-06-28 02:09:49,635 utils 34188 5428 (0.250) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'auth'; args=('auth',); alias=default
+DEBUG 2025-06-28 02:09:49,888 utils 34188 5428 (0.266) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'auth' AND "django_content_type"."model" = 'permission') LIMIT 21; args=('auth', 'permission'); alias=default
+DEBUG 2025-06-28 02:09:50,182 utils 34188 5428 (0.266) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'auth' AND "django_content_type"."model" = 'group') LIMIT 21; args=('auth', 'group'); alias=default
+DEBUG 2025-06-28 02:09:50,500 utils 34188 5428 (0.328) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (2, 3) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(2, 3); alias=default
+DEBUG 2025-06-28 02:09:50,787 utils 34188 5428 (0.281) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'auth'; args=('auth',); alias=default
+DEBUG 2025-06-28 02:09:51,044 utils 34188 5428 (0.266) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'contenttypes'; args=('contenttypes',); alias=default
+DEBUG 2025-06-28 02:09:51,301 utils 34188 5428 (0.250) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'contenttypes' AND "django_content_type"."model" = 'contenttype') LIMIT 21; args=('contenttypes', 'contenttype'); alias=default
+DEBUG 2025-06-28 02:09:51,566 utils 34188 5428 (0.250) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (4) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(4,); alias=default
+DEBUG 2025-06-28 02:09:51,836 utils 34188 5428 (0.265) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'contenttypes'; args=('contenttypes',); alias=default
+DEBUG 2025-06-28 02:09:52,100 utils 34188 5428 (0.266) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'sessions'; args=('sessions',); alias=default
+DEBUG 2025-06-28 02:09:52,364 utils 34188 5428 (0.266) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'sessions' AND "django_content_type"."model" = 'session') LIMIT 21; args=('sessions', 'session'); alias=default
+DEBUG 2025-06-28 02:09:52,635 utils 34188 5428 (0.265) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (5) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(5,); alias=default
+DEBUG 2025-06-28 02:09:52,934 utils 34188 5428 (0.313) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'sessions'; args=('sessions',); alias=default
+DEBUG 2025-06-28 02:09:53,242 utils 34188 5428 (0.297) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'sites'; args=('sites',); alias=default
+DEBUG 2025-06-28 02:09:53,540 utils 34188 5428 (0.296) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'sites' AND "django_content_type"."model" = 'site') LIMIT 21; args=('sites', 'site'); alias=default
+DEBUG 2025-06-28 02:09:53,839 utils 34188 5428 (0.313) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (6) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(6,); alias=default
+DEBUG 2025-06-28 02:09:54,155 utils 34188 5428 (0.312) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'sites'; args=('sites',); alias=default
+DEBUG 2025-06-28 02:09:54,448 utils 34188 5428 (0.266) SELECT 1 AS "a" FROM "django_site" LIMIT 1; args=(1,); alias=default
+DEBUG 2025-06-28 02:09:54,758 utils 34188 5428 (0.312) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'auctions'; args=('auctions',); alias=default
+DEBUG 2025-06-28 02:09:55,038 utils 34188 5428 (0.265) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'auctions' AND "django_content_type"."model" = 'auctions') LIMIT 21; args=('auctions', 'auctions'); alias=default
+DEBUG 2025-06-28 02:09:55,301 utils 34188 5428 (0.266) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (7) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(7,); alias=default
+DEBUG 2025-06-28 02:09:55,566 utils 34188 5428 (0.266) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'auctions'; args=('auctions',); alias=default
+DEBUG 2025-06-28 02:09:55,839 utils 34188 5428 (0.281) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'brands'; args=('brands',); alias=default
+DEBUG 2025-06-28 02:09:56,112 utils 34188 5428 (0.266) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'brands' AND "django_content_type"."model" = 'billingaddress') LIMIT 21; args=('brands', 'billingaddress'); alias=default
+DEBUG 2025-06-28 02:09:56,370 utils 34188 5428 (0.250) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'brands' AND "django_content_type"."model" = 'blog') LIMIT 21; args=('brands', 'blog'); alias=default
+DEBUG 2025-06-28 02:09:56,662 utils 34188 5428 (0.296) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'brands' AND "django_content_type"."model" = 'leads') LIMIT 21; args=('brands', 'leads'); alias=default
+DEBUG 2025-06-28 02:09:56,930 utils 34188 5428 (0.266) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'brands' AND "django_content_type"."model" = 'merchandise') LIMIT 21; args=('brands', 'merchandise'); alias=default
+DEBUG 2025-06-28 02:09:57,198 utils 34188 5428 (0.266) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'brands' AND "django_content_type"."model" = 'wishlist') LIMIT 21; args=('brands', 'wishlist'); alias=default
+DEBUG 2025-06-28 02:09:57,468 utils 34188 5428 (0.281) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'brands' AND "django_content_type"."model" = 'shippingaddress') LIMIT 21; args=('brands', 'shippingaddress'); alias=default
+DEBUG 2025-06-28 02:09:57,731 utils 34188 5428 (0.266) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'brands' AND "django_content_type"."model" = 'merchandisegallery') LIMIT 21; args=('brands', 'merchandisegallery'); alias=default
+DEBUG 2025-06-28 02:09:58,029 utils 34188 5428 (0.296) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'brands' AND "django_content_type"."model" = 'gallery') LIMIT 21; args=('brands', 'gallery'); alias=default
+DEBUG 2025-06-28 02:09:58,324 utils 34188 5428 (0.297) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'brands' AND "django_content_type"."model" = 'cart') LIMIT 21; args=('brands', 'cart'); alias=default
+DEBUG 2025-06-28 02:09:58,677 utils 34188 5428 (0.328) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'brands' AND "django_content_type"."model" = 'branddashboard') LIMIT 21; args=('brands', 'branddashboard'); alias=default
+DEBUG 2025-06-28 02:09:58,971 utils 34188 5428 (0.297) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (8, 9, 10, 11, 12, 13, 14, 15, 16, 17) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(8, 9, 10, 11, 12, 13, 14, 15, 16, 17); alias=default
+DEBUG 2025-06-28 02:09:59,245 utils 34188 5428 (0.281) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'brands'; args=('brands',); alias=default
+DEBUG 2025-06-28 02:09:59,532 utils 34188 5428 (0.281) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'blog'; args=('blog',); alias=default
+DEBUG 2025-06-28 02:09:59,840 utils 34188 5428 (0.313) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'blog' AND "django_content_type"."model" = 'blog') LIMIT 21; args=('blog', 'blog'); alias=default
+DEBUG 2025-06-28 02:10:00,138 utils 34188 5428 (0.297) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (18) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(18,); alias=default
+DEBUG 2025-06-28 02:10:00,424 utils 34188 5428 (0.281) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'blog'; args=('blog',); alias=default
+DEBUG 2025-06-28 02:10:00,737 utils 34188 5428 (0.297) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'communities'; args=('communities',); alias=default
+DEBUG 2025-06-28 02:10:01,035 utils 34188 5428 (0.296) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'communities' AND "django_content_type"."model" = 'community') LIMIT 21; args=('communities', 'community'); alias=default
+DEBUG 2025-06-28 02:10:01,340 utils 34188 5428 (0.313) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'communities' AND "django_content_type"."model" = 'communitypost') LIMIT 21; args=('communities', 'communitypost'); alias=default
+DEBUG 2025-06-28 02:10:01,633 utils 34188 5428 (0.281) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (19, 20) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(19, 20); alias=default
+DEBUG 2025-06-28 02:10:01,936 utils 34188 5428 (0.313) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'communities'; args=('communities',); alias=default
+DEBUG 2025-06-28 02:10:02,228 utils 34188 5428 (0.281) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'accounts'; args=('accounts',); alias=default
+DEBUG 2025-06-28 02:10:02,541 utils 34188 5428 (0.312) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'accounts' AND "django_content_type"."model" = 'customuser') LIMIT 21; args=('accounts', 'customuser'); alias=default
+DEBUG 2025-06-28 02:10:02,799 utils 34188 5428 (0.266) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'accounts' AND "django_content_type"."model" = 'branduser') LIMIT 21; args=('accounts', 'branduser'); alias=default
+DEBUG 2025-06-28 02:10:03,061 utils 34188 5428 (0.266) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'accounts' AND "django_content_type"."model" = 'profile') LIMIT 21; args=('accounts', 'profile'); alias=default
+DEBUG 2025-06-28 02:10:03,324 utils 34188 5428 (0.265) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'accounts' AND "django_content_type"."model" = 'followers') LIMIT 21; args=('accounts', 'followers'); alias=default
+DEBUG 2025-06-28 02:10:03,583 utils 34188 5428 (0.250) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'accounts' AND "django_content_type"."model" = 'brandprofile') LIMIT 21; args=('accounts', 'brandprofile'); alias=default
+DEBUG 2025-06-28 02:10:03,853 utils 34188 5428 (0.266) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (21, 22, 23, 24, 25) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(21, 22, 23, 24, 25); alias=default
+DEBUG 2025-06-28 02:10:04,116 utils 34188 5428 (0.266) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'accounts'; args=('accounts',); alias=default
+DEBUG 2025-06-28 02:10:04,389 utils 34188 5428 (0.281) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'dashboard'; args=('dashboard',); alias=default
+DEBUG 2025-06-28 02:10:04,657 utils 34188 5428 (0.265) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'dashboard' AND "django_content_type"."model" = 'customers') LIMIT 21; args=('dashboard', 'customers'); alias=default
+DEBUG 2025-06-28 02:10:04,905 utils 34188 5428 (0.250) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (26) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(26,); alias=default
+DEBUG 2025-06-28 02:10:05,191 utils 34188 5428 (0.266) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'dashboard'; args=('dashboard',); alias=default
+DEBUG 2025-06-28 02:10:05,453 utils 34188 5428 (0.265) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'transactions'; args=('transactions',); alias=default
+DEBUG 2025-06-28 02:10:05,724 utils 34188 5428 (0.266) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'transactions' AND "django_content_type"."model" = 'deposit') LIMIT 21; args=('transactions', 'deposit'); alias=default
+DEBUG 2025-06-28 02:10:06,050 utils 34188 5428 (0.328) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'transactions' AND "django_content_type"."model" = 'order') LIMIT 21; args=('transactions', 'order'); alias=default
+DEBUG 2025-06-28 02:10:06,336 utils 34188 5428 (0.265) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'transactions' AND "django_content_type"."model" = 'withdraw') LIMIT 21; args=('transactions', 'withdraw'); alias=default
+DEBUG 2025-06-28 02:10:06,587 utils 34188 5428 (0.250) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'transactions' AND "django_content_type"."model" = 'sales') LIMIT 21; args=('transactions', 'sales'); alias=default
+DEBUG 2025-06-28 02:10:06,868 utils 34188 5428 (0.266) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'transactions' AND "django_content_type"."model" = 'refund') LIMIT 21; args=('transactions', 'refund'); alias=default
+DEBUG 2025-06-28 02:10:07,139 utils 34188 5428 (0.281) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'transactions' AND "django_content_type"."model" = 'paymentmethod') LIMIT 21; args=('transactions', 'paymentmethod'); alias=default
+DEBUG 2025-06-28 02:10:07,407 utils 34188 5428 (0.265) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'transactions' AND "django_content_type"."model" = 'payment') LIMIT 21; args=('transactions', 'payment'); alias=default
+DEBUG 2025-06-28 02:10:07,685 utils 34188 5428 (0.282) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'transactions' AND "django_content_type"."model" = 'partners') LIMIT 21; args=('transactions', 'partners'); alias=default
+DEBUG 2025-06-28 02:10:07,955 utils 34188 5428 (0.265) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'transactions' AND "django_content_type"."model" = 'deliveries') LIMIT 21; args=('transactions', 'deliveries'); alias=default
+DEBUG 2025-06-28 02:10:08,230 utils 34188 5428 (0.282) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'transactions' AND "django_content_type"."model" = 'customers') LIMIT 21; args=('transactions', 'customers'); alias=default
+DEBUG 2025-06-28 02:10:08,504 utils 34188 5428 (0.265) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'transactions' AND "django_content_type"."model" = 'coupon') LIMIT 21; args=('transactions', 'coupon'); alias=default
+DEBUG 2025-06-28 02:10:08,748 utils 34188 5428 (0.250) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'transactions' AND "django_content_type"."model" = 'cards') LIMIT 21; args=('transactions', 'cards'); alias=default
+DEBUG 2025-06-28 02:10:09,018 utils 34188 5428 (0.266) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'transactions' AND "django_content_type"."model" = 'billing') LIMIT 21; args=('transactions', 'billing'); alias=default
+DEBUG 2025-06-28 02:10:09,296 utils 34188 5428 (0.266) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'transactions' AND "django_content_type"."model" = 'accounts') LIMIT 21; args=('transactions', 'accounts'); alias=default
+DEBUG 2025-06-28 02:10:09,566 utils 34188 5428 (0.266) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (32, 33, 34, 35, 36, 37, 38, 39, 40, 27, 28, 29, 30, 31) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(32, 33, 34, 35, 36, 37, 38, 39, 40, 27, 28, 29, 30, 31); alias=default
+DEBUG 2025-06-28 02:10:09,834 utils 34188 5428 (0.265) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'transactions'; args=('transactions',); alias=default
+DEBUG 2025-06-28 02:10:10,101 utils 34188 5428 (0.266) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'notifications'; args=('notifications',); alias=default
+DEBUG 2025-06-28 02:10:10,400 utils 34188 5428 (0.297) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'notifications' AND "django_content_type"."model" = 'notification') LIMIT 21; args=('notifications', 'notification'); alias=default
+DEBUG 2025-06-28 02:10:10,684 utils 34188 5428 (0.297) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (41) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(41,); alias=default
+DEBUG 2025-06-28 02:10:10,943 utils 34188 5428 (0.250) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'notifications'; args=('notifications',); alias=default
+DEBUG 2025-06-28 02:10:11,203 utils 34188 5428 (0.265) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'reviews'; args=('reviews',); alias=default
+DEBUG 2025-06-28 02:10:11,475 utils 34188 5428 (0.266) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'reviews' AND "django_content_type"."model" = 'reviews') LIMIT 21; args=('reviews', 'reviews'); alias=default
+DEBUG 2025-06-28 02:10:11,751 utils 34188 5428 (0.281) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'reviews' AND "django_content_type"."model" = 'ratings') LIMIT 21; args=('reviews', 'ratings'); alias=default
+DEBUG 2025-06-28 02:10:12,037 utils 34188 5428 (0.265) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (42, 43) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(42, 43); alias=default
+DEBUG 2025-06-28 02:10:12,322 utils 34188 5428 (0.282) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'reviews'; args=('reviews',); alias=default
+DEBUG 2025-06-28 02:10:12,590 utils 34188 5428 (0.281) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'allauth'; args=('allauth',); alias=default
+DEBUG 2025-06-28 02:10:12,849 utils 34188 5428 (0.250) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'allauth'; args=('allauth',); alias=default
+DEBUG 2025-06-28 02:10:13,138 utils 34188 5428 (0.297) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'account'; args=('account',); alias=default
+DEBUG 2025-06-28 02:10:13,402 utils 34188 5428 (0.265) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'account' AND "django_content_type"."model" = 'emailaddress') LIMIT 21; args=('account', 'emailaddress'); alias=default
+DEBUG 2025-06-28 02:10:13,666 utils 34188 5428 (0.250) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'account' AND "django_content_type"."model" = 'emailconfirmation') LIMIT 21; args=('account', 'emailconfirmation'); alias=default
+DEBUG 2025-06-28 02:10:13,932 utils 34188 5428 (0.250) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (44, 45) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(44, 45); alias=default
+DEBUG 2025-06-28 02:10:14,238 utils 34188 5428 (0.313) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'account'; args=('account',); alias=default
+DEBUG 2025-06-28 02:10:14,539 utils 34188 5428 (0.296) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'socialaccount'; args=('socialaccount',); alias=default
+DEBUG 2025-06-28 02:10:14,825 utils 34188 5428 (0.297) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'socialaccount' AND "django_content_type"."model" = 'socialaccount') LIMIT 21; args=('socialaccount', 'socialaccount'); alias=default
+DEBUG 2025-06-28 02:10:15,089 utils 34188 5428 (0.266) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'socialaccount' AND "django_content_type"."model" = 'socialapp') LIMIT 21; args=('socialaccount', 'socialapp'); alias=default
+DEBUG 2025-06-28 02:10:15,358 utils 34188 5428 (0.266) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'socialaccount' AND "django_content_type"."model" = 'socialtoken') LIMIT 21; args=('socialaccount', 'socialtoken'); alias=default
+DEBUG 2025-06-28 02:10:15,632 utils 34188 5428 (0.265) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (48, 46, 47) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(48, 46, 47); alias=default
+DEBUG 2025-06-28 02:10:15,908 utils 34188 5428 (0.281) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'socialaccount'; args=('socialaccount',); alias=default
+DEBUG 2025-06-28 02:10:16,177 utils 34188 5428 (0.266) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'authtoken'; args=('authtoken',); alias=default
+DEBUG 2025-06-28 02:10:16,467 utils 34188 5428 (0.297) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'authtoken' AND "django_content_type"."model" = 'token') LIMIT 21; args=('authtoken', 'token'); alias=default
+DEBUG 2025-06-28 02:10:16,717 utils 34188 5428 (0.250) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'authtoken' AND "django_content_type"."model" = 'tokenproxy') LIMIT 21; args=('authtoken', 'tokenproxy'); alias=default
+DEBUG 2025-06-28 02:10:16,988 utils 34188 5428 (0.266) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (49, 50) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(49, 50); alias=default
+DEBUG 2025-06-28 02:10:17,248 utils 34188 5428 (0.265) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'authtoken'; args=('authtoken',); alias=default
+DEBUG 2025-06-28 02:10:17,539 utils 34188 5428 (0.281) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'dj_rest_auth'; args=('dj_rest_auth',); alias=default
+DEBUG 2025-06-28 02:10:17,817 utils 34188 5428 (0.266) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'dj_rest_auth'; args=('dj_rest_auth',); alias=default
+DEBUG 2025-06-28 02:10:18,106 utils 34188 5428 (0.297) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'rest_framework_simplejwt'; args=('rest_framework_simplejwt',); alias=default
+DEBUG 2025-06-28 02:10:18,399 utils 34188 5428 (0.281) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'rest_framework_simplejwt'; args=('rest_framework_simplejwt',); alias=default
