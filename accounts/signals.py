@@ -18,6 +18,6 @@ def create_profile(sender, instance, created, **kwargs):
         Profile.objects.create(user=instance)
         print("New user profile has been created for ", instance.email)
         # send email to new user
-        send_mail( subject, message, email_from, recipient_list )
+        #send_mail( subject, message, email_from, recipient_list )
 
  

@@ -9,7 +9,11 @@ from reviews.models import *
 from reviews.serializers import *
 from transactions.serializers import *
 from transactions.models import *
-
+from django.http import JsonResponse
+from django.views import View
+class HealthCheckView(View):
+    def get(self, request):
+        return JsonResponse({"status": "healthy"})
 class UserViewSet(viewsets.ModelViewSet):
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
