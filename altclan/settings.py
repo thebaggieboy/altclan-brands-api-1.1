@@ -19,7 +19,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 'yes', 'on')
 
-ALLOWED_HOSTS = ['altclan-api.onrender.com', 'altclan-brands-api-1-1.onrender.com', 'localhost', '127.0.0.1', 'altclan.store', 'altclanstore.vercel.app']
+ALLOWED_HOSTS = ['altclan-api.onrender.com', 'altclan-brands-api-1-1.onrender.com', 'localhost', '127.0.0.1', 'altclan.store', 'altclanstore.vercel.app', 'altclanui.vercel.app']
 
 # Application definition
 INSTALLED_APPS = [
