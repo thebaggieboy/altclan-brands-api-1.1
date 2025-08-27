@@ -10,11 +10,3 @@ from brands.models import ShippingAddress, BillingAddress, BrandDashboard, Merch
 User = settings.AUTH_USER_MODEL
 
 
-# Only handle gallery creation for new merchandise
-@receiver(post_save, sender=Merchandise)
-def create_merchandise_gallery(sender, instance, created, **kwargs):
-    if created:
-        MerchandiseGallery.objects.create(merchandise=instance)
-        print("------ Merchandise Gallery Created! ------")
-        print(f"Gallery created for {instance.merchandise_name}")
-

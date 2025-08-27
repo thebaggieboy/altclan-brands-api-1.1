@@ -165,6 +165,7 @@ class WishList(models.Model):
 
 class Gallery(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='brand_gallery')
+    brand_name = models.CharField(max_length=250, null=True, blank=True)
     # FIXED: Removed null=True from ArrayField items
     images = ArrayField(models.CharField(max_length=250), blank=True, default=list)
     # FIXED: Use timezone.now without parentheses
@@ -180,6 +181,7 @@ class Gallery(models.Model):
 class MerchandiseGallery(models.Model):
     # Each Merch Gallery belongs to a Merch
     merchandise = models.ForeignKey(Merchandise, on_delete=models.CASCADE, null=True, blank=True, related_name='merchandise_gallery')
+    
     # FIXED: Removed null=True from ArrayField items
     images = ArrayField(models.CharField(max_length=250), blank=True, default=list)
     # FIXED: Use timezone.now without parentheses
