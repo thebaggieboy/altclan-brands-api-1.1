@@ -177,7 +177,7 @@ class Gallery(models.Model):
     def __str__(self):
         return f'{self.user} Gallery - {self.images.__len__()} images'
 class BrandGallery(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='brand_gallery')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='gallery')
     brand_name = models.CharField(max_length=250, null=True, blank=True)
     # FIXED: Removed null=True from ArrayField items
     images = ArrayField(models.CharField(max_length=250), blank=True, default=list)
