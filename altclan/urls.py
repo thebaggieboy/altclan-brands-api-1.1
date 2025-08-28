@@ -7,7 +7,7 @@ from rest_framework import routers
 from core.views import *
 from accounts.views import *
 from brands.views import *
-from blog.views import BlogViewSet as BlogsViewSet   
+from blog.views import BlogViewSet as BlogsViewSet, ArticlesViewSet
 from communities.views import *
 from reviews.views import *
 from auctions.views import *
@@ -34,7 +34,7 @@ router.register(r'refund', RefundViewSet)
 router.register(r'reviews', ReviewViewSet)
 router.register(r'blog', BlogsViewSet)
 router.register(r'shipping_address', ShippingAddressViewSet)
-
+router.register(r'articles', ArticlesViewSet)   
  
 urlpatterns = [
 
