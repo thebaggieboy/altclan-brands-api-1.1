@@ -35,7 +35,7 @@ router.register(r'reviews', ReviewViewSet)
 router.register(r'blog', BlogsViewSet)
 router.register(r'shipping_address', ShippingAddressViewSet)
 router.register(r'articles', ArticlesViewSet)   
- 
+router.register(r'brand_gallery', BrandGalleryViewSet)
 urlpatterns = [
 
     path('admin/', admin.site.urls),

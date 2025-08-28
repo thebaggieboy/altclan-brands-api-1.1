@@ -176,7 +176,19 @@ class Gallery(models.Model):
 
     def __str__(self):
         return f'{self.user} Gallery - {self.images.__len__()} images'
+class BrandGallery(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='brand_gallery')
+    brand_name = models.CharField(max_length=250, null=True, blank=True)
+    # FIXED: Removed null=True from ArrayField items
+    images = ArrayField(models.CharField(max_length=250), blank=True, default=list)
+    # FIXED: Use timezone.now without parentheses
+    date_created = models.DateTimeField(default=timezone.now)
+    # FIXED: Added title and description fields
+    title = models.CharField(max_length=250, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
 
+    def __str__(self):
+        return f'{self.user} Gallery - {self.images.__len__()} images'
     
 class MerchandiseGallery(models.Model):
     # Each Merch Gallery belongs to a Merch

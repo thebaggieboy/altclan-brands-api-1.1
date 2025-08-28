@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import  Merchandise, Leads, BrandDashboard, Gallery, ShippingAddress
+from .models import  Merchandise, Leads, BrandDashboard, Gallery, ShippingAddress, BrandGallery
 from django.conf import settings
 from accounts.models import BrandProfile
 
@@ -14,6 +14,14 @@ class GallerySerializer(serializers.HyperlinkedModelSerializer):
         model = Gallery
         fields = ['id', 'brand_name','images']
         
+
+class BrandGallerySerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = BrandGallery
+        fields = ['id', 'brand_name', 'images', 'title', 'description']
+
+
+
 class BrandProfileSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = BrandProfile

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.conf import settings
 from rest_framework import viewsets
 from accounts.models import BrandProfile, BrandUser
-from .models import  WishList, Merchandise, Leads, BrandDashboard, Gallery
+from .models import  WishList, Merchandise, Leads, BrandDashboard, Gallery, BrandGallery
 
 from .serializers import *
  
@@ -16,9 +16,10 @@ class GalleryViewSet(viewsets.ModelViewSet):
     serializer_class = GallerySerializer
     #order_by = ['date_created']
 
-class GalleryViewSet(viewsets.ModelViewSet):
-    queryset = Gallery.objects.all().order_by('-date_created').values()
-    serializer_class = GallerySerializer
+
+class BrandGalleryViewSet(viewsets.ModelViewSet):
+    queryset = BrandGallery.objects.all().order_by('-date_created').values()
+    serializer_class = BrandGallerySerializer
     #order_by = ['date_created']
 class ShippingAddressViewSet(viewsets.ModelViewSet):
     queryset = ShippingAddress.objects.all()
