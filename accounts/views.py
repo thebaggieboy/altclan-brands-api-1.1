@@ -3,9 +3,9 @@ from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
 from allauth.socialaccount.providers.oauth2.client import OAuth2Client
 from dj_rest_auth.registration.views import SocialLoginView
 from rest_framework import viewsets
-from .serializers import UserSerializer, ProfileSerializer, BrandUserSerializer, BlogSerializer
+from .serializers import UserSerializer, ProfileSerializer, BlogSerializer
 from brands.serializers import BrandDashboardSerializer
-from .models import Profile, CustomUser, BrandUser
+from .models import Profile, CustomUser
 from brands.models import BrandDashboard, Blog
 from django.conf import settings
 #BrandUser = settings.BRAND_USER_MODEL
@@ -22,11 +22,6 @@ class UserViewSet(viewsets.ModelViewSet):
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-
-class BrandUserViewSet(viewsets.ModelViewSet):
-    queryset = BrandUser.objects.all()
-    serializer_class = BrandUserSerializer
-
 class BrandDashboardViewSet(viewsets.ModelViewSet):
     queryset = BrandDashboard.objects.all()
     serializer_class = BrandDashboardSerializer

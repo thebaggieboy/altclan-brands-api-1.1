@@ -4,19 +4,15 @@ from django.utils import timezone
 from django.template.defaultfilters import slugify
 from .display import LABEL_DISPLAY, COLLECTION_DISPLAY, COMMUNITY_TYPE_DISPLAY
 from django.conf import settings
-from accounts.models import BrandProfile
 
 from django.contrib.postgres.fields import ArrayField
 
 User = settings.AUTH_USER_MODEL
-BrandUser = settings.BRAND_USER_MODEL
 
 from .choices import STATUS, GENDER, COMMUNITY_TYPE, CLOTHING_CATEGORY
-from accounts.models import BrandProfile
-
 
 class BrandDashboard(models.Model):
-    user = models.OneToOneField(BrandUser, on_delete=models.CASCADE, related_name='brand_dashboard', null=True, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='brand_dashboard', null=True, blank=True)
     #profile = models.OneToOneField(BrandProfile, on_delete=models.CASCADE, related_name='brand_dashboard', null=True, blank=True)
     total_views = models.CharField(max_length=250, null=True, blank=True)
     total_users = models.CharField(max_length=250, null=True, blank=True)
@@ -111,7 +107,7 @@ class Leads(models.Model):
 
 
 class BillingAddress(models.Model):
-    user = models.OneToOneField(BrandUser, on_delete=models.CASCADE, related_name='address', null=True, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='address', null=True, blank=True)
     street_address = models.CharField(max_length=250, default='')
     city = models.CharField(max_length=250, default='')
     state = models.CharField(max_length=250, default='')

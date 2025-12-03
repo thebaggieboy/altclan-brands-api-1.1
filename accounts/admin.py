@@ -1,12 +1,14 @@
 from django.contrib import admin
-from .models import Profile, BaseUserManager, AbstractBaseUser
+from .models import Profile, AbstractBaseUser
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.conf import settings
 from django.contrib.auth import get_user_model
-from .models import BrandUser
+
 User = get_user_model()
+
+
 
 
 class UserAdmin(BaseUserAdmin):
@@ -37,7 +39,7 @@ class UserAdmin(BaseUserAdmin):
     filter_horizontal = ()
 
 
-class BrandUserAdmin(BaseUserAdmin):
+
     # The forms to add and change user instances
     form = UserChangeForm
     add_form = UserCreationForm
@@ -65,6 +67,5 @@ class BrandUserAdmin(BaseUserAdmin):
     filter_horizontal = ()
 
 admin.site.register(User, UserAdmin)
-admin.site.register(BrandUser, BrandUserAdmin)
 admin.site.register(Profile)
-#admin.site.register()
+

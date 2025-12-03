@@ -41,11 +41,6 @@ class LeadsViewSet(viewsets.ModelViewSet):
 # Create your views here.
 
 # Create your views here.
-class BrandProfileViewSet(viewsets.ModelViewSet):
-    queryset = BrandProfile.objects.all()
-    serializer_class = BrandProfileSerializer
-    
-# Create your views here.
 class BrandDashboardViewSet(viewsets.ModelViewSet):
     queryset = BrandDashboard.objects.all()
     serializer_class = BrandDashboardSerializer

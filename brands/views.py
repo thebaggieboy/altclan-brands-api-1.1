@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.conf import settings
 from rest_framework import viewsets
-from accounts.models import BrandProfile, BrandUser
+
 from .models import  WishList, Merchandise, Leads, BrandDashboard, Gallery, BrandGallery
 
 from .serializers import *
@@ -32,12 +32,6 @@ class ShippingAddressViewSet(viewsets.ModelViewSet):
 class BrandDashboardViewSet(viewsets.ModelViewSet):
     queryset = BrandDashboard.objects.all()
     serializer_class = BrandDashboardSerializer
-
-# Create your views here.
-class BrandProfileViewSet(viewsets.ModelViewSet):
-    queryset = BrandProfile.objects.all()
-    serializer_class = BrandProfileSerializer
-
 
 
 

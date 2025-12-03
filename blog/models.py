@@ -5,8 +5,6 @@ from django.template.defaultfilters import slugify
 from django.conf import settings
 from django.contrib.postgres.fields import ArrayField
 
-BrandUser = settings.BRAND_USER_MODEL
-
 
 class Blog(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -24,18 +22,6 @@ class Blog(models.Model):
         if not self.slug:
             self.slug = slugify(f'{self.brand_name}')
         return super().save(*args, **kwargs)
-# ProductOrder, these are the items that have been
-
-
-import uuid
-from django.db import models
-from django.utils import timezone
-from django.template.defaultfilters import slugify
-from django.conf import settings
-from django.contrib.postgres.fields import ArrayField
-
-BrandUser = settings.BRAND_USER_MODEL
-
 
 class Articles(models.Model):
 
