@@ -69,15 +69,15 @@ class CustomUser(AbstractBaseUser):
     brand_logo = models.URLField(default='', null=True, blank=True)
     brand_bio = models.TextField(default='', null=True, blank=True)
     brand_type = models.CharField(choices=COMMUNITY_TYPE, default='', max_length=250, null=True, blank=True)
-    mobile_number = models.CharField(max_length=250, default='', null=True, blank=True)
+    mobile_number = models.CharField(max_length=250, null=True, blank=True, unique=True)
     followers = ArrayField(models.CharField(max_length=250, null=True, blank=True), default=list)  
     wish_list = ArrayField(models.CharField(max_length=250, null=True, blank=True), default=list)  
    
     slug = models.SlugField(null=True, blank=True, default='')
-    billing_address = models.CharField(max_length=250, default='', null=True, blank=True)
-    city = models.CharField(max_length=250, default='', null=True, blank=True)
-    state = models.CharField(max_length=250, default='', null=True, blank=True)
-    zip = models.CharField(max_length=250, default='', null=True, blank=True)
+    billing_address = models.CharField(max_length=250,  null=True, blank=True, unique=True)
+    city = models.CharField(max_length=250,  null=True, blank=True, unique=True)
+    state = models.CharField(max_length=250,  null=True, blank=True, unique=True)
+    zip = models.CharField(max_length=250,  null=True, blank=True, unique=True)
     is_active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False) # a admin user; non super-user
     admin = models.BooleanField(default=False) # a superuser
