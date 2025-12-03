@@ -1,17 +1,43 @@
-services:
-  - name: altclan-brands-api-1-1
-    type: web
-    env: docker
-    plan: free
-    dockerfilePath: Dockerfile
-    healthCheckPath: /health/
-    region: oregon
-    envVarGroups:
-      - altclan-production-2
-    envVars:
-      - key: DJANGO_SETTINGS_MODULE
-        value: altclan.settings
-      - key: PORT
-        value: 8000
-    autoDeploy: true
-    branch: main
+# Exported from Render on 2025-12-03T04:17:39Z
+version: "1"
+projects:
+- name: Altclan
+  environments:
+  - name: Production
+    services:
+    - type: web
+      name: altclan-brands-api-1.1
+      runtime: docker
+      repo: https://github.com/thebaggieboy/altclan-brands-api-1.1
+      plan: free
+      envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false
+      - key: CORS_ALLOW_ALL_ORIGINS
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: EMAIL_HOST_PASSWORD
+        sync: false
+      - key: EMAIL_HOST_USER
+        sync: false
+      - key: EMAIL_USE_TLS
+        sync: false
+      - key: EMAIL_PORT
+        sync: false
+      - key: EMAIL_HOST
+        sync: false
+      - key: DATABASE_SSL_REQUIRE
+        sync: false
+      - key: DATABASE_CONN_MAX_AGE
+        sync: false
+      - key: DEBUG
+        sync: false
+      - key: SECRET_KEY
+        sync: false
+      region: oregon
+      dockerContext: .
+      dockerfilePath: ./Dockerfile
+      autoDeployTrigger: commit
