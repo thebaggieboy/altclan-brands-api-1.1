@@ -29,13 +29,17 @@ DEPOSIT_TYPE = (
     ('Transfer', 'Transfer'),
     ('Card', 'Card'),
     ('USSD', 'USSD'),
+    ('Paystack', 'Paystack'),
+    ('Opay', 'Opay')
+     
 )
 
 PAYMENT_TYPE = (
-    ('Paystack', 'Paystack'),
+    ('Transfer', 'Transfer'),
     ('Card', 'Card'),
-    ('Paypal', 'Paypal'),
-    ('Bank Transfer', 'Bank Transfer'),
+    ('USSD', 'USSD'),
+    ('Paystack', 'Paystack'),
+    ('Opay', 'Opay')
 )
 
 from django.contrib.auth import get_user_model
@@ -101,7 +105,9 @@ class Order(models.Model):
 
 class PaymentMethod(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='user_payment_method')
-    name = models.CharField(max_length=250, null=True, blank=True)
+    email = models.CharField(max_length=250, default='', null=True)
+    type = models.CharField(max_length=250, null=True, blank=True, choices=PAYMENT_TYPE, default='Paystack')
+    
     # FIXED: Use timezone.now without parentheses
     start_date = models.DateTimeField(default=timezone.now)
 
@@ -114,7 +120,7 @@ class Payment(models.Model):
     email = models.CharField(max_length=250, default='', null=True)
     paystack_reference_number = models.CharField(max_length=250, blank=True, null=True)
     customer = models.CharField(max_length=250, blank=True, null=True)
-    payment_method = models.CharField(max_length=250, blank=True, null=True)
+    payment_method = models.CharField(max_length=250, blank=True, null=True, choices=PAYMENT_TYPE, default='Paystack')
     amount = models.FloatField()
     status = models.CharField(max_length=250, null=True, blank=True)
     order_id = models.CharField(max_length=250, blank=True, null=True)

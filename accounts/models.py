@@ -72,7 +72,6 @@ class CustomUser(AbstractBaseUser):
     mobile_number = models.CharField(max_length=250, null=True, blank=True, unique=True)
     followers = ArrayField(models.CharField(max_length=250, null=True, blank=True), default=list)  
     wish_list = ArrayField(models.CharField(max_length=250, null=True, blank=True), default=list)  
-   
     slug = models.SlugField(null=True, blank=True, default='')
     billing_address = models.CharField(max_length=250,  null=True, blank=True, unique=True)
     city = models.CharField(max_length=250,  null=True, blank=True, unique=True)
@@ -134,6 +133,7 @@ class CustomUser(AbstractBaseUser):
 class Profile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile', null=True, blank=True)
+    
     date_created = models.DateTimeField(default=timezone.now())
     def __str__(self):
         return f'Profile :  {self.user}'
