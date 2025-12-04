@@ -14,8 +14,8 @@ class Reviews(models.Model):
     merchandise_slug = models.SlugField(max_length=250, blank=True, null=True)
     merchandise_name = models.CharField(max_length=250, blank=True, null=True)
     review = models.TextField(default='', blank=True, null=True)
-    individual_rating = models.IntegerField() #2 #1 #4 
-    max_rating = models.IntegerField() #5 
+    individual_rating = models.CharField(max_length=250, blank=True, null=True) #2 #1 #4 
+    max_rating = models.CharField(max_length=250, blank=True, null=True) #5 
     cummulative_rating = models.FloatField() #2/5 1/5 4/5
     rating = ArrayField(models.IntegerField(), default=list) 
     created_at = models.DateTimeField(auto_now_add=True)
