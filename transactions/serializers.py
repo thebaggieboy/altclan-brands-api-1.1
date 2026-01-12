@@ -61,7 +61,7 @@ class BankSerializer(serializers.HyperlinkedModelSerializer):
     
     class Meta:
         model = Accounts
-        fields = ['id', 'email', 'bank_name']
+        fields = ['id', 'email', 'bank_name', 'bank_code', 'account_name', 'account_number']
       
 
 class CardSerializer(serializers.HyperlinkedModelSerializer):
@@ -69,7 +69,7 @@ class CardSerializer(serializers.HyperlinkedModelSerializer):
     
     class Meta:
         model = Cards
-        fields = ['id', 'email', 'card_holder']
+        fields = ['id', 'email', 'card_holder', 'card_name', 'expiry_date', 'cvv']
       
 
  

@@ -14,8 +14,9 @@ from auctions.views import *
 from dashboard.views import *
 from notifications import views
 from notifications import consumers
+from transactions import *
 
-from transactions.views import get_daily_orders, get_monthly_orders
+from transactions.views import get_daily_orders, get_monthly_orders, BankViewSet, CardViewSet
 
 
 from rest_framework_simplejwt import views as jwt_views
@@ -29,6 +30,8 @@ router.register(r'gallery', GalleryViewSet)
 router.register(r'customers', CustomerViewSet)
 router.register(r'orders', OrderViewSet)
 router.register(r'payments', PaymentViewSet)
+router.register(r'bank', BankViewSet)
+router.register(r'bank', CardViewSet)
 router.register(r'coupons', CouponViewSet)
 router.register(r'refund', RefundViewSet)
 router.register(r'reviews', ReviewViewSet)

@@ -113,7 +113,7 @@ class BankViewSet(viewsets.ModelViewSet):
     serializer_class = BankSerializer
 
 class CardViewSet(viewsets.ModelViewSet):
-    queryset = Accounts.objects.all()
+    queryset = Cards.objects.all()
     serializer_class = CardSerializer
 
 
