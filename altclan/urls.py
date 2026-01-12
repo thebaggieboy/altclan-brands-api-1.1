@@ -14,8 +14,7 @@ from auctions.views import *
 from dashboard.views import *
 from notifications import views
 from notifications import consumers
-from transactions import *
-
+ 
 from transactions.views import get_daily_orders, get_monthly_orders, BankViewSet, CardViewSet
 
 
