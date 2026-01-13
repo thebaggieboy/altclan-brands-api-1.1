@@ -50,10 +50,10 @@ RANDOM_ORDER_ID = get_random_string(length=12)
 class Accounts(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True, related_name='user_accounts')
     email = models.CharField(max_length=250, default='', null=True)
-    bank_name = models.CharField(max_length=150, default='', null=True)
-    bank_code = models.CharField(max_length=150, default='', null=True)
-    account_name = models.CharField(max_length=150, default='', null=True)
-    account_number = models.CharField(max_length=150, default='', null=True)
+    bank_name = models.CharField(max_length=250, default='', null=True)
+    bank_code = models.CharField(max_length=250, default='', null=True)
+    account_name = models.CharField(max_length=250, default='', null=True)
+    account_number = models.CharField(max_length=250, default='', null=True)
 
     def __str__(self):
         return self.bank_code or ''
