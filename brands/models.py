@@ -43,15 +43,12 @@ class Merchandise(models.Model):
     # FIXED: Removed null=True from ArrayField items
     reviews = ArrayField(models.CharField(max_length=250), default=list, blank=True)
     images = ArrayField(models.CharField(max_length=250), default=list, blank=True, null=True, )
-    image_1 = models.URLField(null=True, blank=True,)
-    image_2 = models.URLField(null=True, blank=True,)
-    image_3 = models.URLField(null=True, blank=True,)
-    image_4 = models.URLField(null=True, blank=True,)
-    image_5 = models.URLField(null=True, blank=True,)
     labels = models.CharField(max_length=250, null=True, blank=True, default='')
-    price = models.IntegerField(null=True, blank=True)
+    price = models.FloatField(null=True, blank=True, default=0.00)
     delivery_cost = models.FloatField(null=True, blank=True, default=0.00)
+    commission_fee = models.FloatField(null=True, blank=True, default=0.15)
     discount = models.FloatField(null=True, blank=True, default=0.00)
+    total_amount = models.FloatField(null=True, blank=True, default=0.00)
     slug = models.SlugField(null=True, blank=True)
     # FIXED: Use timezone.now without parentheses
     date_created = models.DateTimeField(default=timezone.now)
