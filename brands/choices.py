@@ -37,6 +37,12 @@ COMMUNITY_TYPE = (
     ('Masks', 'Masks'),
     ('Gothic', 'Gothic'),
 )
+
+BRAND_CATEGORY = (
+    ("Original", "Original"),
+    ("Reseller", "Reseller")
+)
+
 CLOTHING_CATEGORY= (
     ('Tops', 'Tops'),
     ('Pants', 'Pants'),
@@ -63,8 +69,7 @@ CLOTHING_CATEGORY= (
     ('Tattoos', 'Tattoos'),
     ('Chains & Necklaces', 'Chains & Necklaces'),
     ('Vintage Shirts', 'Vintage Shirts'),
-    ('Native Wears', 'Native Wears'),
-   
+    ('Native Wears', 'Native Wears'), 
     ('Bags', 'Bags'),
     ('Sunglasses', 'Sunglasses'),
     ('Hats & Caps', 'Hats & Caps'),

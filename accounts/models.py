@@ -6,7 +6,7 @@ from django.utils.text import slugify
 from django.conf import settings
 from django.utils import timezone
 from brands.display import LABEL_DISPLAY, COLLECTION_DISPLAY, COMMUNITY_TYPE_DISPLAY
-from brands.choices import STATUS, GENDER, COMMUNITY_TYPE, CLOTHING_CATEGORY
+from brands.choices import STATUS, GENDER, COMMUNITY_TYPE, CLOTHING_CATEGORY, BRAND_CATEGORY
 from .choices import *
 from django.contrib.postgres.fields import ArrayField
 
@@ -69,6 +69,8 @@ class CustomUser(AbstractBaseUser):
     brand_logo = models.URLField(default='', null=True, blank=True)
     brand_bio = models.TextField(default='', null=True, blank=True)
     brand_type = models.CharField(choices=COMMUNITY_TYPE, default='', max_length=250, null=True, blank=True)
+    brand_category = models.CharField(choices=BRAND_CATEGORY, default='', max_length=250, null=True, blank=True)
+    
     mobile_number = models.CharField(max_length=250, null=True, blank=True, unique=True)
     followers = ArrayField(models.CharField(max_length=250, null=True, blank=True), default=list)  
     wish_list = ArrayField(models.CharField(max_length=250, null=True, blank=True), default=list)  

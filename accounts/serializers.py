@@ -19,7 +19,7 @@ class BlogSerializer(serializers.HyperlinkedModelSerializer):
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ['id', 'slug',  'email', 'brand_name', 'brand_logo',  'brand_bio', 'followers', 'brand_type', 'mobile_number', 'is_active', 'staff', 'admin']
+        fields = ['id', 'slug',  'email', 'brand_name', 'brand_logo',  'brand_bio', 'followers', 'brand_type', 'brand_category',  'mobile_number', 'is_active', 'staff', 'admin']
 
 
 class ProfileSerializer(serializers.HyperlinkedModelSerializer):
