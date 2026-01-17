@@ -37,7 +37,8 @@ COMMUNITY_TYPE = (
     ('Masks', 'Masks'),
     ('Gothic', 'Gothic'),
     ('Sportswear', 'Sportswear'),
-    ('Native Attires', 'Native Attires')
+    ('Native Attires', 'Native Attires'),
+     ('Bags', 'Bags')
 )
 
 BRAND_CATEGORY = (
