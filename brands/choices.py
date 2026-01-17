@@ -26,8 +26,8 @@ COMMUNITY_TYPE = (
     ('Kids Clothing', 'Kids Clothing'),
     ('Accessories', 'Accessories'),
     ('Jewelleries', 'Jewelleries'),
-    ('Resale wears', 'Resale wears'),
-    ('Thrift wears', 'Thrift wears'),
+    ('Resale', 'Resale'),
+    ('Thrift Store', 'Thrift Store'),
     ('Arts & Aesthetics', 'Arts & Aesthetics'),
     ('Footwears', 'Footwears'),
     ('Enigmas', 'Enigmas'),
@@ -36,6 +36,8 @@ COMMUNITY_TYPE = (
     ('Caps', 'Caps'),
     ('Masks', 'Masks'),
     ('Gothic', 'Gothic'),
+    ('Sportswear', 'Sportswear'),
+    ('Native Attires', 'Native Attires')
 )
 
 BRAND_CATEGORY = (
@@ -81,6 +83,7 @@ CLOTHING_CATEGORY= (
      ('Earrings', 'Earrings'),
     ('Joggers', 'Joggers'),
     ('Jeans', 'Jeans'),
+    ('Sportswear', 'Sportswear')
     
 
 )
