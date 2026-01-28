@@ -18,6 +18,12 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
     
+    def get_queryset(self):
+        """
+        Override get_queryset to filter out admin users from the brands list.
+        Only returns users where admin=False (regular brands, not staff/superusers).
+        """
+        return CustomUser.objects.filter(admin=False)
 
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
