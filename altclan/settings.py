@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'transactions.apps.TransactionsConfig',
     'notifications.apps.NotificationsConfig',
     'reviews.apps.ReviewsConfig',
+    'chats.apps.ChatsConfig',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
