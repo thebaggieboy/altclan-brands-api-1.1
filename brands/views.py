@@ -7,18 +7,18 @@ from .models import  WishList, Merchandise, Leads, BrandDashboard, Gallery, Bran
 from .serializers import *
  
 class MerchandiseViewSet(viewsets.ModelViewSet):
-    queryset = Merchandise.objects.all().order_by('-date_created').values()
+    queryset = Merchandise.objects.all().order_by('-date_created')
     serializer_class = MerchandiseSerializer
     #order_by = ['date_created']
 
 class GalleryViewSet(viewsets.ModelViewSet):
-    queryset = Gallery.objects.all().order_by('-date_created').values()
+    queryset = Gallery.objects.all().order_by('-date_created')
     serializer_class = GallerySerializer
     #order_by = ['date_created']
 
 
 class BrandGalleryViewSet(viewsets.ModelViewSet):
-    queryset = BrandGallery.objects.all().order_by('-date_created').values()
+    queryset = BrandGallery.objects.all().order_by('-date_created')
     serializer_class = BrandGallerySerializer
     #order_by = ['date_created']
 class ShippingAddressViewSet(viewsets.ModelViewSet):
