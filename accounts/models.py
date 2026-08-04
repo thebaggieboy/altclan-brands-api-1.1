@@ -79,6 +79,7 @@ class CustomUser(AbstractBaseUser):
     city = models.CharField(max_length=250,  null=True, blank=True, unique=True)
     state = models.CharField(max_length=250,  null=True, blank=True, unique=True)
     zip = models.CharField(max_length=250,  null=True, blank=True, unique=True)
+    date_joined = models.DateTimeField(default=timezone.now)
     is_active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False) # a admin user; non super-user
     admin = models.BooleanField(default=False) # a superuser

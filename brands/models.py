@@ -49,6 +49,7 @@ class Merchandise(models.Model):
     commission_fee = models.FloatField(null=True, blank=True, default=0.15)
     discount = models.FloatField(null=True, blank=True, default=0.00)
     total_amount = models.FloatField(null=True, blank=True, default=0.00)
+    stock_quantity = models.IntegerField(default=1)
     slug = models.SlugField(null=True, blank=True)
     # FIXED: Use timezone.now without parentheses
     date_created = models.DateTimeField(default=timezone.now)
