@@ -5,9 +5,9 @@ STATUS = (
 )
 
 GENDER = (
-    ('Men', 'Men'),
-    ('Women', 'Women'),
-    ('Non-Binary', 'Non-Binary'),
+    ('Male', 'Male'),
+    ('Female', 'Female'),
+    ('Unisex', 'Unisex'),
 )
 
 MERCHANDISE_SIZE_TYPE = (
@@ -17,18 +17,20 @@ MERCHANDISE_SIZE_TYPE = (
     ('foot',  'foot'),
     ('wrist',  'wrist'),
     ('neck',  'neck'),
+    ('art','art'),
     
 )
-
+    
 COMMUNITY_TYPE = (
     ('Clothing & Apparel', 'Clothing & Apparel'),
     ('Streetwear', 'Streetwear'),
     ('Kids Clothing', 'Kids Clothing'),
     ('Accessories', 'Accessories'),
     ('Jewelleries', 'Jewelleries'),
+    ('Fragrance', 'Fragrance')
     ('Resale', 'Resale'),
     ('Thrift Store', 'Thrift Store'),
-    ('Arts & Aesthetics', 'Arts & Aesthetics'),
+    ('Arts', 'Arts'),
     ('Footwears', 'Footwears'),
     ('Enigmas', 'Enigmas'),
     ('Watches', 'Watches'),
@@ -38,7 +40,18 @@ COMMUNITY_TYPE = (
     ('Gothic', 'Gothic'),
     ('Sportswear', 'Sportswear'),
     ('Native Attires', 'Native Attires'),
-     ('Bags', 'Bags')
+    ('Bags', 'Bags'),
+    ('Aesthetics', 'Aesthetics'),
+    ('Boutique', 'Boutique'),
+    ('Luxury', 'Luxury'),
+    ('Socks', 'Socks'),
+    ('Lingerie', 'Lingerie'),
+    ('Swimwears', 'Swimwears'),
+    ('Chrochet', 'Chrochet'),
+  
+
+    
+     
 )
 
 BRAND_CATEGORY = (
