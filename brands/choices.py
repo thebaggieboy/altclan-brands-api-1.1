@@ -27,7 +27,7 @@ COMMUNITY_TYPE = (
     ('Kids Clothing', 'Kids Clothing'),
     ('Accessories', 'Accessories'),
     ('Jewelleries', 'Jewelleries'),
-    ('Fragrance', 'Fragrance')
+    ('Fragrance', 'Fragrance'),
     ('Resale', 'Resale'),
     ('Thrift Store', 'Thrift Store'),
     ('Arts & Crafts', 'Arts & Crafts'),
