@@ -30,7 +30,7 @@ COMMUNITY_TYPE = (
     ('Fragrance', 'Fragrance')
     ('Resale', 'Resale'),
     ('Thrift Store', 'Thrift Store'),
-    ('Arts', 'Arts'),
+    ('Arts & Crafts', 'Arts & Crafts'),
     ('Footwears', 'Footwears'),
     ('Enigmas', 'Enigmas'),
     ('Watches', 'Watches'),
