@@ -18,6 +18,7 @@ MERCHANDISE_SIZE_TYPE = (
     ('wrist',  'wrist'),
     ('neck',  'neck'),
     ('art','art'),
+
     
 )
     
@@ -29,6 +30,7 @@ COMMUNITY_TYPE = (
     ('Jewelleries', 'Jewelleries'),
     ('Fragrance', 'Fragrance'),
     ('Resale', 'Resale'),
+    ('Interior Design', 'Interior Design'),
     ('Thrift Store', 'Thrift Store'),
     ('Arts & Crafts', 'Arts & Crafts'),
     ('Footwears', 'Footwears'),
