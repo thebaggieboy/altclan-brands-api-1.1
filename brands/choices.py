@@ -42,11 +42,24 @@ COMMUNITY_TYPE = (
     ('Gothic', 'Gothic'),
     ('Sportswear', 'Sportswear'),
     ('Native Attires', 'Native Attires'),
+    ('Suits', 'Suits'),
+    ('Wedding Gowns', 'Wedding Gowns'),
+    ('Ties', 'Ties'),
+    ('Cuff Links', 'Cuff Links'),
+    ('Socks', 'Socks'),
+    ('Slides', 'Slides'),
+    ('Beads', 'Beads'),
+    ('Tracksuits', 'Tracksuits'),
+    ('Denim', 'Denim'),
+    ('Gloves', 'Gloves'),
+    ('Masks', 'Masks'),
+    ('Dresses', 'Dresses'),
+    ('Nose Rings', 'Nose Rings'),
+    ('Ear Rings', 'Ear Rings'),
     ('Bags', 'Bags'),
     ('Aesthetics', 'Aesthetics'),
     ('Boutique', 'Boutique'),
     ('Luxury', 'Luxury'),
-    ('Socks', 'Socks'),
     ('Lingerie', 'Lingerie'),
     ('Swimwears', 'Swimwears'),
     ('Chrochet', 'Chrochet'),
@@ -99,9 +112,22 @@ CLOTHING_CATEGORY= (
      ('Earrings', 'Earrings'),
     ('Joggers', 'Joggers'),
     ('Jeans', 'Jeans'),
-    ('Sportswear', 'Sportswear')
-    
-
+   ('Sportswear', 'Sportswear'),
+   ('Suits', 'Suits'),
+   ('Wedding Gowns', 'Wedding Gowns'),
+   ('Ties', 'Ties'),
+   ('Cuff Links', 'Cuff Links'),
+   ('Socks', 'Socks'),
+   ('Slides', 'Slides'),
+   ('Beads', 'Beads'),
+   ('Tracksuits', 'Tracksuits'),
+   ('Denim', 'Denim'),
+   ('Gloves', 'Gloves'),
+   ('Masks', 'Masks'),
+   ('Dresses', 'Dresses'),
+   ('Nose Rings', 'Nose Rings'),
+   ('Ear Rings', 'Ear Rings')
+ 
 )
 
 ACCESSORIES_CATEGORY = (
