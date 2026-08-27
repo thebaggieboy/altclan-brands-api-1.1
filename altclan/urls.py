@@ -24,10 +24,10 @@ router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'auctions', AuctionsViewSet)
 router.register(r'communities', CommunityViewSet)
-router.register(r'merchandises', MerchandiseViewSet)
+router.register(r'merchandises', MerchandiseViewSet, basename='merchandise')
 router.register(r'gallery', GalleryViewSet)
 router.register(r'customers', CustomerViewSet)
-router.register(r'orders', OrderViewSet)
+router.register(r'orders', OrderViewSet, basename='order')
 router.register(r'payments', PaymentViewSet)
 router.register(r'bank', BankViewSet)
 #router.register(r'cards', CardViewSet)
@@ -52,6 +52,10 @@ urlpatterns = [
     path('api/notifications/', views.NotificationListAPI.as_view(), name='notification-list'),
     path('api/notifications/unread_count/', views.UnreadNotificationCountAPI.as_view(), name='unread-count'),
     path('api/notifications/mark_as_read/', views.MarkAsReadAPI.as_view(), name='mark-as-read'),
+    path('api/personalized/', personalized_feed, name='personalized-feed'),
+    path('api/flash-deals/', flash_deals, name='flash-deals'),
+    path('api/ai-recommendations/', ai_recommendations, name='ai-recommendations'),
+    path('api/track-event/', track_event, name='track-event'),
     re_path(r'ws/notifications/$', consumers.NotificationConsumer.as_asgi()),
   
   

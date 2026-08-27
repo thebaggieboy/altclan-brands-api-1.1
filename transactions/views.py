@@ -100,8 +100,65 @@ def get_monthly_orders(request):
     # Return JSON response
     return JsonResponse(formatted_data)
 class OrderViewSet(viewsets.ModelViewSet):
-    queryset = Order.objects.all()
     serializer_class = OrderSerializer
+
+    def get_queryset(self):
+        qs = Order.objects.all().order_by('-date_created')
+        req = self.request
+        if getattr(req.user, 'is_authenticated', False) and getattr(req.user, 'brand_name', None):
+            req_brand = req.user.brand_name
+        else:
+            req_brand = None
+        user_id = req.query_params.get('user')
+        if req_brand:
+            user_id = None
+            brand = req_brand
+        if user_id:
+            return qs.filter(user_id=user_id)
+
+        brand = req.query_params.get('brand') or req.query_params.get('brand_name')
+        if brand:
+            # find merchandise ids for brand_name
+            try:
+                from brands.models import Merchandise
+                from accounts.models import CustomUser
+                if str(brand).isdigit():
+                    brand_user = CustomUser.objects.filter(id=int(brand)).first()
+                    brand_name = brand_user.brand_name if brand_user else None
+                    if not brand_name:
+                        return qs.none()
+                    merch_qs = Merchandise.objects.filter(brand_name=brand_name)
+                else:
+                    merch_qs = Merchandise.objects.filter(brand_name__iexact=brand)
+                merch_ids = list(merch_qs.values_list('id', flat=True))
+                if merch_ids:
+                    filtered = []
+                    for o in qs:
+                        items = o.item or []
+                        for it in items:
+                            # robustly check various id fields
+                            pid = None
+                            if isinstance(it, dict):
+                                pid = it.get('id') or it.get('merchandise_id') or it.get('product_id')
+                            else:
+                                # if stored as JSON string
+                                try:
+                                    import json
+                                    parsed = json.loads(it)
+                                    pid = parsed.get('id') or parsed.get('merchandise_id') or parsed.get('product_id')
+                                except Exception:
+                                    pid = None
+                            try:
+                                if pid and int(pid) in merch_ids:
+                                    filtered.append(o)
+                                    break
+                            except Exception:
+                                continue
+                    return filtered
+            except Exception:
+                return qs.none()
+            return qs.none()
+        return qs
 
 
 class PaymentViewSet(viewsets.ModelViewSet):
