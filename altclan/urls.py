@@ -21,6 +21,7 @@ from transactions.views import get_daily_orders, get_monthly_orders, BankViewSet
 from rest_framework_simplejwt import views as jwt_views
 
 router = routers.DefaultRouter()
+router.register(r'session-logs', SessionLogViewSet, basename='session-log')
 router.register(r'users', UserViewSet, basename='user')
 router.register(r'auctions', AuctionsViewSet, basename='auction')
 router.register(r'communities', CommunityViewSet, basename='community')

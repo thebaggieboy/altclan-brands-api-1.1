@@ -11,7 +11,7 @@ class Blog(models.Model):
     brand_name = models.CharField(max_length=250, null=True, blank=True)
     title = models.CharField(max_length=250, null=True, blank=True)
     subject = models.TextField()
-    slug = models.SlugField(null=True, blank=True, default='')
+    slug = models.SlugField(max_length=250, null=True, blank=True, default='')
     date_created = models.DateTimeField(auto_now_add=True)
     
     
@@ -20,7 +20,7 @@ class Blog(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(f'{self.brand_name}')
+            self.slug = slugify(self.title or self.brand_name or str(self.id))
         return super().save(*args, **kwargs)
 
 class Articles(models.Model):
@@ -28,8 +28,11 @@ class Articles(models.Model):
     brand_name = models.CharField(max_length=250, null=True, blank=True)
     title = models.CharField(max_length=250, null=True, blank=True)
     subject = models.TextField()
-    slug = models.SlugField(null=True, blank=True, default='')
+    slug = models.SlugField(max_length=250, null=True, blank=True, default='')
     date_created = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    author = models.CharField(max_length=250, null=True, blank=True)
+    image_url = models.URLField(null=True, blank=True)
     
     
     def __str__(self):
@@ -37,6 +40,11 @@ class Articles(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(f'{self.brand_name}')
+            base_slug = (slugify(self.title or self.brand_name or str(self.pk)) or 'article')[:240].rstrip('-')
+            self.slug = base_slug
+            suffix = 2
+            while Articles.objects.filter(slug=self.slug).exclude(pk=self.pk).exists():
+                self.slug = f'{base_slug}-{suffix}'
+                suffix += 1
         return super().save(*args, **kwargs)
 # ProductOrder, these are the items that have been

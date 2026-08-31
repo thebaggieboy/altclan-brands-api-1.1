@@ -10,5 +10,15 @@ class BlogSerializer(serializers.HyperlinkedModelSerializer):
 class ArticlesSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Articles
-        fields = ['id', 'brand_name', 'title', 'subject', 'slug']
+        fields = [
+            'id',
+            'brand_name',
+            'title',
+            'subject',
+            'slug',
+            'date_created',
+            'updated_at',
+            'author',
+            'image_url',
+        ]
 
