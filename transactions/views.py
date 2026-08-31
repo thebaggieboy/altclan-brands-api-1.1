@@ -139,13 +139,19 @@ class OrderViewSet(viewsets.ModelViewSet):
                             # robustly check various id fields
                             pid = None
                             if isinstance(it, dict):
-                                pid = it.get('id') or it.get('merchandise_id') or it.get('product_id')
+                                if str(it.get('brandName', '')).strip().lower() == str(brand_name).strip().lower():
+                                    filtered.append(o)
+                                    break
+                                pid = it.get('itemId') or it.get('id') or it.get('merchandise_id') or it.get('product_id')
                             else:
                                 # if stored as JSON string
                                 try:
                                     import json
                                     parsed = json.loads(it)
-                                    pid = parsed.get('id') or parsed.get('merchandise_id') or parsed.get('product_id')
+                                    if str(parsed.get('brandName', '')).strip().lower() == str(brand_name).strip().lower():
+                                        filtered.append(o)
+                                        break
+                                    pid = parsed.get('itemId') or parsed.get('id') or parsed.get('merchandise_id') or parsed.get('product_id')
                                 except Exception:
                                     pid = None
                             try:
@@ -177,8 +183,17 @@ class CardViewSet(viewsets.ModelViewSet):
 
 
 class CouponViewSet(viewsets.ModelViewSet):
-    queryset = Coupon.objects.all()
     serializer_class = CouponSerializer
+
+    def get_queryset(self):
+        queryset = Coupon.objects.all().order_by('-start_date')
+        current_user = self.request.user
+        brand_id = self.request.query_params.get('brand')
+        if getattr(current_user, 'is_authenticated', False) and getattr(current_user, 'brand_name', None):
+            brand_id = current_user.id
+        if brand_id:
+            return queryset.filter(user_id=brand_id)
+        return queryset.none()
 
 
 class RefundViewSet(viewsets.ModelViewSet):
