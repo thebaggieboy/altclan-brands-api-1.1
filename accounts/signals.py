@@ -22,12 +22,38 @@ from .models import Profile
 User = settings.AUTH_USER_MODEL
 
 
-def send_account_email(user_email, subject, message):
+def send_account_email(user_email, subject, message, html_message=None):
+    """Send email with optional HTML content.
+    If html_message is None, we generate a simple styled HTML wrapper
+    using the provided subject and plain message.
+    """
     if not user_email:
         return
-
-    from_email = getattr(settings, 'DEFAULT_FROM_EMAIL', None) or 'noreply@altclan.store'
-    send_mail(subject, message, from_email, [user_email], fail_silently=True)
+    from_email = getattr(settings, "DEFAULT_FROM_EMAIL", None) or "noreply@altclan.store"
+    # Build a basic HTML template if none supplied
+    if html_message is None:
+        html_message = f"""
+        <!DOCTYPE html>
+        <html lang='en'>
+        <head><meta charset='UTF-8'><title>{subject}</title></head>
+        <body style='font-family: Inter, sans-serif; background:#f8fafc; padding:2rem;'>
+            <div style='max-width:600px;margin:auto;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.05);padding:2rem;'>
+                <h2 style='color:#667eea;'>{subject}</h2>
+                <p>{message.replace('\n', '<br>')}</p>
+            </div>
+        </body>
+        </html>
+        """
+    # Use EmailMultiAlternatives for multipart
+    from django.core.mail import EmailMultiAlternatives
+    email = EmailMultiAlternatives(
+        subject=subject,
+        body=message,
+        from_email=from_email,
+        to=[user_email],
+    )
+    email.attach_alternative(html_message, "text/html")
+    email.send(fail_silently=True)
 
 
 @receiver(post_save, sender=User)

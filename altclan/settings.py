@@ -271,6 +271,10 @@ APPEND_SLASH = False
 DOMAIN = os.getenv('DOMAIN', 'altclan.shop')
 SITE_NAME = os.getenv('SITE_NAME', 'Altclan')
 
+# Frontend base URL used in email templates
+FRONTEND_BASE_URL = os.getenv('FRONTEND_BASE_URL', 'https://altclan.shop')
+# Marketing email list for merchandise notifications
+MARKETING_EMAILS = [os.getenv('MARKETING_EMAIL', 'marketing@altclan.shop')]
 # DJOSER SETTINGS
 DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': 'brands/reset_password?uid={uid}&token={token}',
