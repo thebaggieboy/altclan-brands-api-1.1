@@ -22,38 +22,29 @@ from .models import Profile
 User = settings.AUTH_USER_MODEL
 
 
-def send_account_email(user_email, subject, message, html_message=None):
-    """Send email with optional HTML content.
-    If html_message is None, we generate a simple styled HTML wrapper
-    using the provided subject and plain message.
+def send_account_email(user_email, subject, message, template_name=None, extra_context=None):
+    """Send an email using the HTML utility.
+    By default the generic ``default_email.html`` template is used. Callers can
+    provide a specific ``template_name`` (relative to the ``email/`` template
+    directory) and an ``extra_context`` dictionary to inject additional variables
+    into the template.
     """
     if not user_email:
         return
-    from_email = getattr(settings, "DEFAULT_FROM_EMAIL", None) or "noreply@altclan.store"
-    # Build a basic HTML template if none supplied
-    if html_message is None:
-        html_message = f"""
-        <!DOCTYPE html>
-        <html lang='en'>
-        <head><meta charset='UTF-8'><title>{subject}</title></head>
-        <body style='font-family: Inter, sans-serif; background:#f8fafc; padding:2rem;'>
-            <div style='max-width:600px;margin:auto;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.05);padding:2rem;'>
-                <h2 style='color:#667eea;'>{subject}</h2>
-                <p>{message.replace('\n', '<br>')}</p>
-            </div>
-        </body>
-        </html>
-        """
-    # Use EmailMultiAlternatives for multipart
-    from django.core.mail import EmailMultiAlternatives
-    email = EmailMultiAlternatives(
-        subject=subject,
-        body=message,
-        from_email=from_email,
-        to=[user_email],
-    )
-    email.attach_alternative(html_message, "text/html")
-    email.send(fail_silently=True)
+    from core.email_utils import send_html_email
+    # Base context shared by all emails
+    context = {
+        "subject": subject,
+        "plain_message": message,
+        "content": message.replace('\n', '<br>'),
+        "header": subject,
+        "button_url": None,
+        "button_text": None,
+    }
+    if extra_context:
+        context.update(extra_context)
+    tmpl = template_name or 'email/default_email.html'
+    send_html_email(tmpl, context, subject, [user_email])
 
 
 @receiver(post_save, sender=User)
@@ -64,12 +55,15 @@ def create_profile(sender, instance, created, **kwargs):
         send_account_email(
             instance.email,
             'Welcome to Altclan',
-            (
-                f'Hi {instance.email},\n\n'
-                'Thank you for registering with Altclan. We are excited to have you on board!\n\n'
-                'Best regards,\n'
-                'The Altclan Team'
-            ),
+            (f'Hi {instance.email},\n\n'
+             'Thank you for registering with Altclan. We are excited to have you on board!\n\n'
+             'Best regards,\n'
+             'The Altclan Team'),
+            template_name='email/welcome_email.html',
+            extra_context={
+                'user_email': instance.email,
+                'frontend_url': settings.FRONTEND_BASE_URL,
+            },
         )
 
 

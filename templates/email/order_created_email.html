@@ -1,0 +1,10 @@
+{% extends "email/base_email.html" %}
+{% block title %}Order Confirmation{% endblock %}
+{% block header %}Your order has been placed!{% endblock %}
+{% block content %}
+<p>Hi {{ user_email }},</p>
+<p>Thank you for your purchase. Your order <strong>#{{ ref_code }}</strong> has been received.</p>
+<p>Total: ${{ total }}</p>
+<p>We will notify you once it ships.</p>
+<p><a href="{{ button_url }}" class="button">View Order Details</a></p>
+{% endblock %}

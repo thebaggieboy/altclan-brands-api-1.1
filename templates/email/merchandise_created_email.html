@@ -1,0 +1,10 @@
+{% extends "email/base_email.html" %}
+{% block title %}New Merchandise Added{% endblock %}
+{% block header %}New Merchandise Alert{% endblock %}
+{% block content %}
+<p>Hello,</p>
+<p>A new merchandise <strong>{{ merchandise_name }}</strong> has been added to the platform.</p>
+<p>Description: {{ merchandise_description }}</p>
+<p>Price: ${{ price }}</p>
+<p>View it here: <a href="{{ button_url }}" class="button">View Merchandise</a></p>
+{% endblock %}

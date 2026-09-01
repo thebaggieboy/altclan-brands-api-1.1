@@ -1,0 +1,8 @@
+{% extends "email/base_email.html" %}
+{% block title %}Brand Registration{% endblock %}
+{% block header %}Welcome to Altclan Brand Dashboard{% endblock %}
+{% block content %}
+<p>Hi {{ user_email }},</p>
+<p>Thank you for signing up your brand "{{ brand_name }}" on Altclan.</p>
+<p>You can manage your brand dashboard using the button below.</p>
+{% endblock %}

@@ -18,7 +18,19 @@ def send_brand_lead_email(sender, instance, created, **kwargs):
             'Best regards,\n'
             'Altclan Team'
         )
-        send_account_email(instance.email_address, subject, message)
+        send_account_email(
+            instance.email_address,
+            subject,
+            message,
+            template_name='email/brand_lead_email.html',
+            extra_context={
+                'brand_name': instance.brand_name,
+                'frontend_url': settings.FRONTEND_BASE_URL,
+                'user_email': instance.email_address,
+                'button_url': f"{settings.FRONTEND_BASE_URL}/brand/dashboard",
+                'button_text': 'Go to Dashboard',
+            },
+        )
 
 # Merchandise creation email to marketing list
 @receiver(post_save, sender=Merchandise)

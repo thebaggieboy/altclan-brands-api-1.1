@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}{{ subject }}{% endblock %}</title>
+  <style>
+    body {font-family: Inter, sans-serif; background:#f8fafc; padding:2rem; margin:0;}
+    .card {max-width:600px;margin:auto;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.05);padding:2rem;}
+    .header {background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:1rem;border-radius:12px 12px 0 0;text-align:center;font-size:1.5rem;}
+    .footer {margin-top:2rem;font-size:.85rem;color:#666;text-align:center;}
+    a.button {display:inline-block;background:#667eea;color:#fff;padding:.5rem 1rem;border-radius:6px;text-decoration:none;margin-top:1rem;}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">{% block header %}{{ header|default:subject }}{% endblock %}</div>
+    <div class="content" style="margin-top:1rem;">
+      {% block content %}{% endblock %}
+    </div>
+    {% if button_url and button_text %}
+      <a href="{{ button_url }}" class="button">{{ button_text }}</a>
+    {% endif %}
+    <div class="footer">
+      © {{ now|date:"Y" }} Altclan. All rights reserved.
+    </div>
+  </div>
+</body>
+</html>

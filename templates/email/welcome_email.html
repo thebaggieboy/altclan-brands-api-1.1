@@ -1,0 +1,8 @@
+{% extends "email/base_email.html" %}
+{% block title %}Welcome to Altclan{% endblock %}
+{% block header %}Welcome to Altclan{% endblock %}
+{% block content %}
+<p>Hi {{ user_email }},</p>
+<p>Thank you for registering with Altclan. We are excited to have you on board!</p>
+<p><a href="{{ frontend_url }}" class="button">Explore Altclan</a></p>
+{% endblock %}
