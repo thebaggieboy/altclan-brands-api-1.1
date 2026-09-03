@@ -47,4 +47,16 @@ def send_merchandise_created_email(sender, instance, created, **kwargs):
         )
         # Send to all marketing emails
         for email in getattr(settings, "MARKETING_EMAILS", []):
-            send_account_email(email, subject, message)
+            send_account_email(
+                email,
+                subject,
+                message,
+                template_name='email/merchandise_created_email.html',
+                extra_context={
+                    'merchandise_name': instance.merchandise_name,
+                    'merchandise_description': instance.merchandise_description,
+                    'price': f'{instance.price:.2f}',
+                    'button_url': f"{settings.FRONTEND_BASE_URL}/merchandise/{instance.slug}",
+                    'button_text': 'View Merchandise',
+                },
+            )
