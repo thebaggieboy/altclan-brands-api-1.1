@@ -108,19 +108,12 @@ CHANNEL_LAYERS = {
 ASGI_APPLICATION = 'altclan.asgi.application'
 WSGI_APPLICATION = 'altclan.wsgi.application'
 
-# ---------------------------------------------------------------------------
-# Cache configuration – use the same Redis instance already provisioned for
-# Django Channels to also serve as an application-level cache (django-redis).
-# ---------------------------------------------------------------------------
+# Keep HTTP caching local so an unavailable Redis service cannot make API
+# requests fail. Redis remains available for Channels when configured.
 CACHES = {
     "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": REDIS_URL,
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        },
-        "KEY_PREFIX": "altclan_brands",
-        "TIMEOUT": 300,  # 5 minutes default TTL
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "altclan-brands-api",
     }
 }
 

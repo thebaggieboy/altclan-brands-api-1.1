@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.conf import settings
 from django.utils.decorators import method_decorator
-from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_headers
 from rest_framework import viewsets
 
@@ -10,8 +9,6 @@ from .models import  WishList, Merchandise, Leads, BrandDashboard, Gallery, Bran
 from .serializers import *
 from accounts.models import CustomUser
  
-@method_decorator(cache_page(300), name='list')      # 5 min cache
-@method_decorator(cache_page(300), name='retrieve')
 @method_decorator(vary_on_headers('Cookie', 'Authorization'), name='list')
 class MerchandiseViewSet(viewsets.ModelViewSet):
     serializer_class = MerchandiseSerializer
