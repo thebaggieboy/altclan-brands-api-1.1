@@ -17,9 +17,14 @@ load_dotenv()
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 'yes', 'on')
+DEBUG = os.getenv('DEBUG', 'False').lower() in ('true', '1', 'yes', 'on')
 
-ALLOWED_HOSTS = [ 'db.sjuglfdkinjfaljezjbs.supabase.co', 'altclan-api.onrender.com', 'altclan-brands-api-1-1.onrender.com', 'localhost', '127.0.0.1', 'altclan.store', 'altclanstore.vercel.app', 'altclanui.vercel.app']
+ALLOWED_HOSTS = [
+    host.strip() for host in os.getenv(
+        'ALLOWED_HOSTS',
+        'altclan-api.onrender.com,altclan-brands-api-1-1.onrender.com,localhost,127.0.0.1'
+    ).split(',') if host.strip()
+]
 
 # Application definition
 INSTALLED_APPS = [
@@ -189,6 +194,8 @@ CSRF_TRUSTED_ORIGINS = [
     'https://altclan.com',
     'https://altclan-api.onrender.com',
     'https://altclan-brands-api-1-1.onrender.com',
+    'https://altclan.shop',
+    'https://www.altclan.shop',
     'http://localhost:8000',
     'http://127.0.0.1:8000',
     'http://localhost:3000',
@@ -217,7 +224,7 @@ SIMPLE_JWT = {
     'ROTATE_REFRESH_TOKENS': False,
 }
 
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = os.getenv('CORS_ALLOW_ALL_ORIGINS', 'False').lower() in ('true', '1', 'yes', 'on')
 
 CORS_ALLOW_METHODS = [
     'DELETE',
@@ -248,8 +255,16 @@ CORS_ALLOWED_ORIGINS = [
     'http://www.altclan.com',
     'https://www.altclan.com',
     'https://altclan-brands-api-1-1.onrender.com',
+    'https://altclan.shop',
+    'https://www.altclan.shop',
     'https://api.cloudinary.com'
 ]
+
+configured_cors_origins = os.getenv('CORS_ALLOWED_ORIGINS', '')
+if configured_cors_origins:
+    CORS_ALLOWED_ORIGINS = [
+        origin.strip() for origin in configured_cors_origins.split(',') if origin.strip()
+    ]
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
