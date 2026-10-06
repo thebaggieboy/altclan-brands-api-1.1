@@ -1,8 +1,11 @@
 import os
+import logging
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.core.mail import EmailMultiAlternatives
 from typing import List, Dict
+
+logger = logging.getLogger(__name__)
 
 def send_html_email(template_name: str, context: Dict, subject: str, recipient_list: List[str]):
     """Render an HTML template and send a multipart email.
@@ -23,4 +26,8 @@ def send_html_email(template_name: str, context: Dict, subject: str, recipient_l
         to=recipient_list,
     )
     email.attach_alternative(html_content, "text/html")
-    email.send(fail_silently=False)
+    try:
+        return email.send(fail_silently=False)
+    except Exception:
+        logger.exception("Email delivery failed; continuing without the optional notification.")
+        return 0

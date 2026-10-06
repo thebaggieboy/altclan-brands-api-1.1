@@ -62,7 +62,11 @@ COMMUNITY_TYPE = (
     ('Luxury', 'Luxury'),
     ('Lingerie', 'Lingerie'),
     ('Swimwears', 'Swimwears'),
-    ('Chrochet', 'Chrochet'),
+    ('Crochet', 'Crochet'),
+    ('Handmade', 'Handmade'),
+    ("Vintage Shirts", "Vintage Shirts"),
+    
+    
   
 
     
@@ -77,9 +81,11 @@ BRAND_CATEGORY = (
 CLOTHING_CATEGORY= (
     ('Tops', 'Tops'),
     ('Pants', 'Pants'),
+    ('Shorts', 'Shorts'),
     ('Sweaters', 'Sweaters'),
     ('T-Shirts', 'T-Shirts'),
     ('Jackets', 'Jackets'),
+    ('Jeans', 'Jeans'),
     ('Denim', 'Denim'),
     ('Watches', 'Watches'),
     ('Wallets', 'Wallets'),
@@ -109,7 +115,8 @@ CLOTHING_CATEGORY= (
     ('Hoodies', 'Hoodies'),
     ('Baggy Wears', 'Baggy Wears'),
     ('Rings', 'Rings'),
-     ('Earrings', 'Earrings'),
+    ('Earrings', 'Earrings'),
+    ('Nose Rings', 'Nose Rings'),
     ('Joggers', 'Joggers'),
     ('Jeans', 'Jeans'),
    ('Sportswear', 'Sportswear'),
@@ -126,7 +133,11 @@ CLOTHING_CATEGORY= (
    ('Masks', 'Masks'),
    ('Dresses', 'Dresses'),
    ('Nose Rings', 'Nose Rings'),
-   ('Ear Rings', 'Ear Rings')
+   ('Ear Rings', 'Ear Rings'),
+   ('Beads', 'Beads'),
+   ('Armless', 'Armless'),
+   ('Underwear', 'Underwear'),
+   
  
 )
 
@@ -137,5 +148,16 @@ ACCESSORIES_CATEGORY = (
     ('Sunglasses', 'Sunglasses'),
     ('Hats and Caps', 'Hats and Caps'),
     ('Belts', 'Belts'),
+    ('Chains & Necklaces', 'Chains & Necklaces'),
+    
 )
 
+MANUFACTURERS = (
+    ("YOU x Manufacturing", "YOU x Manufacturing"),
+    ("Paradise Atelier", "Paradise Atelier")
+)
+
+LOGISTICS = (
+    ("", ""),
+    
+)
