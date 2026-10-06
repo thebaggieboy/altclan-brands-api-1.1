@@ -1,4 +1,6 @@
 
+import logging
+
 from django.conf import settings
 from django.contrib.auth.signals import user_logged_in
 from django.db.models.signals import post_save
@@ -19,6 +21,7 @@ from djoser import signals as djoser_signals
 from .models import Profile
 
 User = settings.AUTH_USER_MODEL
+logger = logging.getLogger(__name__)
 
 
 def send_account_email(user_email, subject, message, template_name=None, extra_context=None):
@@ -28,22 +31,26 @@ def send_account_email(user_email, subject, message, template_name=None, extra_c
     directory) and an ``extra_context`` dictionary to inject additional variables
     into the template.
     """
-    if not user_email:
-        return
-    from core.email_utils import send_html_email
-    # Base context shared by all emails
-    context = {
-        "subject": subject,
-        "plain_message": message,
-        "content": message.replace('\n', '<br>'),
-        "header": subject,
-        "button_url": None,
-        "button_text": None,
-    }
-    if extra_context:
-        context.update(extra_context)
-    tmpl = template_name or 'email/default_email.html'
-    send_html_email(tmpl, context, subject, [user_email])
+    try:
+        if not user_email:
+            return
+        from core.email_utils import send_html_email
+        context = {
+            "subject": subject,
+            "plain_message": message,
+            "content": message.replace('\n', '<br>'),
+            "header": subject,
+            "button_url": None,
+            "button_text": None,
+        }
+        if extra_context:
+            context.update(extra_context)
+        tmpl = template_name or 'email/default_email.html'
+        send_html_email(tmpl, context, subject, [user_email])
+    except Exception:
+        logger.exception(
+            "Account email notification failed; continuing the account operation."
+        )
 
 
 @receiver(post_save, sender=User)
@@ -64,21 +71,6 @@ def create_profile(sender, instance, created, **kwargs):
                 'frontend_url': settings.FRONTEND_BASE_URL,
             },
         )
-
-
-@receiver(djoser_signals.user_registered)
-def send_djoser_signup_email(sender, user, request, **kwargs):
-    send_account_email(
-        user.email,
-        'Your Altclan account has been created',
-        (
-            f'Hello {user.email},\n\n'
-            'Your Altclan account was created successfully.\n\n'
-            'You can now explore brands, discover communities, and shop the latest pieces.\n\n'
-            'Warm regards,\n'
-            'Altclan Team'
-        ),
-    )
 
 
 @receiver(user_signed_up)

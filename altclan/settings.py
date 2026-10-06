@@ -1,4 +1,5 @@
 import os
+import logging
 from datetime import timedelta
 from pathlib import Path
 from dotenv import load_dotenv
@@ -326,12 +327,19 @@ DJOSER = {
     }
 }
 
-# Email SMTP Settings
-# Replace all SMTP settings with:
-EMAIL_BACKEND = "anymail.backends.resend.EmailBackend"
-ANYMAIL = {
-    "RESEND_API_KEY": os.getenv("RESEND_API_KEY") or os.getenv("ANYMAIL_RESEND_API_KEY") or "re_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-}
+# Email delivery is optional. Do not send requests to Resend with a placeholder
+# key when no credential is configured.
+RESEND_API_KEY = os.getenv("RESEND_API_KEY") or os.getenv("ANYMAIL_RESEND_API_KEY")
+if RESEND_API_KEY:
+    EMAIL_BACKEND = "anymail.backends.resend.EmailBackend"
+    ANYMAIL = {"RESEND_API_KEY": RESEND_API_KEY}
+else:
+    EMAIL_BACKEND = "django.core.mail.backends.dummy.EmailBackend"
+    ANYMAIL = {}
+    logging.getLogger(__name__).warning(
+        "Resend is not configured; email notifications are disabled."
+    )
+
 DEFAULT_FROM_EMAIL = os.getenv(
     "DEFAULT_FROM_EMAIL",
     "ALTCLAN <noreply@altclan.shop>",  # must match your verified Resend domain
