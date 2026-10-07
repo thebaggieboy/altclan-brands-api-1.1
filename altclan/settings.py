@@ -2,8 +2,11 @@ import os
 import logging
 from datetime import timedelta
 from pathlib import Path
+from urllib.parse import urlsplit
 from dotenv import load_dotenv
 import dj_database_url
+
+logger = logging.getLogger(__name__)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -61,7 +64,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'rest_framework_simplejwt',
     'channels',
-    'anymail',
 ]
 
 MIDDLEWARE = [
@@ -263,9 +265,22 @@ CORS_ALLOWED_ORIGINS = [
 
 configured_cors_origins = os.getenv('CORS_ALLOWED_ORIGINS', '')
 if configured_cors_origins:
-    CORS_ALLOWED_ORIGINS = [
-        origin.strip() for origin in configured_cors_origins.split(',') if origin.strip()
-    ]
+    valid_cors_origins = []
+    for configured_origin in configured_cors_origins.split(','):
+        origin = configured_origin.strip().rstrip('/')
+        parsed_origin = urlsplit(origin)
+        if (
+            parsed_origin.scheme in ('http', 'https')
+            and parsed_origin.netloc
+            and parsed_origin.path == ''
+            and not parsed_origin.query
+            and not parsed_origin.fragment
+        ):
+            valid_cors_origins.append(origin)
+        else:
+            logger.warning("Ignoring invalid CORS_ALLOWED_ORIGINS entry: %r", configured_origin)
+    if valid_cors_origins:
+        CORS_ALLOWED_ORIGINS = valid_cors_origins
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
@@ -283,7 +298,7 @@ CORS_REPLACE_HTTPS_REFERER = True
 
 ACCOUNT_USER_MODEL_USERNAME_FIELD = 'email'
 AUTH_USER_MODEL = 'accounts.CustomUser'
-EMAIL_BACKEND = "anymail.backends.resend.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.dummy.EmailBackend"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'optional'
@@ -327,21 +342,8 @@ DJOSER = {
     }
 }
 
-# Email delivery is optional. Do not send requests to Resend with a placeholder
-# key when no credential is configured.
-RESEND_API_KEY = os.getenv("RESEND_API_KEY") or os.getenv("ANYMAIL_RESEND_API_KEY")
-if RESEND_API_KEY:
-    EMAIL_BACKEND = "anymail.backends.resend.EmailBackend"
-    ANYMAIL = {"RESEND_API_KEY": RESEND_API_KEY}
-else:
-    EMAIL_BACKEND = "django.core.mail.backends.dummy.EmailBackend"
-    ANYMAIL = {}
-    logging.getLogger(__name__).warning(
-        "Resend is not configured; email notifications are disabled."
-    )
-
 DEFAULT_FROM_EMAIL = os.getenv(
     "DEFAULT_FROM_EMAIL",
-    "ALTCLAN <noreply@altclan.shop>",  # must match your verified Resend domain
+    "ALTCLAN <noreply@altclan.shop>",
 )
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
